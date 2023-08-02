@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as Polygon } from './assets/polygon.svg';
 import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
+import ContentsList from './ContentsList';
+import arrowIcon from './assets/Vector.svg';
 
 const Home = () => {
   const [progress, setProgress] = useState(0);
@@ -46,6 +48,17 @@ const Home = () => {
         </BannerText>
         <LastPhaseModel />
       </Banner>
+
+      <Contents>
+        <Header>
+          <h3>플로밍, 왜 해야 할까요?</h3>
+          <div>
+            <button>전체보기</button>
+            <img src={arrowIcon} />
+          </div>
+        </Header>
+        <ContentsList />
+      </Contents>
     </Section>
   );
 };
@@ -129,6 +142,33 @@ const Progress = styled.div`
     margin: 0;
     height: 32px;
     cursor: default;
+  }
+`;
+
+const Contents = styled.div`
+  margin-top: 276px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Header = styled.div`
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  h3 {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    color: #1e1e1e;
+  }
+  div button {
+    color: #1e1e1e;
+    background-color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 600px;
   }
 `;
 

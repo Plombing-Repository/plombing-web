@@ -64,6 +64,9 @@ const Home = () => {
 };
 
 const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png');
   background-size: cover;
   background-position: center;
@@ -71,15 +74,17 @@ const Section = styled.div`
   width: 100%;
   height: 100vh;
   z-index: -1;
+  padding: 40px 240px;
+  box-sizing: border-box;
 `;
 
 const Banner = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: fit-content;
-  justify-content: center;
-  padding: 40px 240px;
+  width: 100%;
+  margin-left: 24px;
+  justify-content: flex-start;
 `;
 
 const BannerText = styled.div`
@@ -146,17 +151,20 @@ const Progress = styled.div`
 `;
 
 const Contents = styled.div`
-  margin-top: 276px;
+  margin-top: 192px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 `;
 
 const Header = styled.div`
-  margin-bottom: 120px;
+  margin-bottom: 100px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   h3 {
     font-size: 1.4rem;
     letter-spacing: -0.5px;
@@ -166,9 +174,8 @@ const Header = styled.div`
     color: #1e1e1e;
     background-color: white;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
-    margin-left: 600px;
   }
 `;
 

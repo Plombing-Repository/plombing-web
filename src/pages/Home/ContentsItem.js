@@ -41,10 +41,10 @@ const Item = styled.div`
     margin-left: 27px;
   }
   h3 {
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     margin-top: 4px;
-    font-size: 1.6rem;
-    line-height: 150%;
+    font-size: 1.4rem;
+    line-height: 180%;
   }
 `;
 
@@ -55,13 +55,13 @@ const Class = styled.p`
   font-weight: 500;
   line-height: 140%;
   margin-bottom: 4px;
-  margin-top: 23px;
+  margin-top: 28px;
 `;
 
 const Description = styled.p`
   width: 419px;
   color: #3f3f3f;
-  font-size: 18.4px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
@@ -81,5 +81,6 @@ const Info = styled.div`
   p {
     margin-right: 26px;
     margin-top: 0;
+    color: #1e1e1e;
   }
 `;

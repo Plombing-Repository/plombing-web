@@ -96,7 +96,6 @@ const BannerText = styled.div`
   margin-bottom: 1rem;
   margin-right: 4rem;
   line-height: 150%;
-  font-family: Pretendard;
   h1 {
     font-size: 2rem;
     line-height: 150%;

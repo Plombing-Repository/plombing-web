@@ -16,7 +16,7 @@
     },
     {
       "id": 3,
-      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "img": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202302/11/9e7dd875-5cd0-4776-9ca8-264c6fdb440a.jpg",
       "title": "환경을 생각하는 인공폭포",
       "date": "2023.07.24",
       "writer": "김플로"
@@ -48,6 +48,72 @@
       "title": "환경을 생각하는 인공폭포",
       "date": "2023.07.24",
       "writer": "김플로"
+    }
+  ],
+  "recommends": [
+    {
+      "id": 1,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 2,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 3,
+      "img": "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202302/11/9e7dd875-5cd0-4776-9ca8-264c6fdb440a.jpg",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 4,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 5,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 6,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 7,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
+    },
+    {
+      "id": 1,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "course": "인왕산 B코스",
+      "address": "서울 종로구 무악동 산2-1",
+      "level": "중급",
+      "time": "4시간"
     }
   ]
 }

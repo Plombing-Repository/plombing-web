@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as Polygon } from './assets/polygon.svg';
 import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
+import arrowIcon from './assets/Vector.svg';
+import ArticleItem from './ArticleItem';
 
 const Home = () => {
   const [progress, setProgress] = useState(0);
@@ -46,11 +48,25 @@ const Home = () => {
         </BannerText>
         <LastPhaseModel />
       </Banner>
+
+      <Contents>
+        <Header>
+          <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
+          <div>
+            <button>전체보기</button>
+            <img src={arrowIcon} />
+          </div>
+        </Header>
+        <ArticleItem />
+      </Contents>
     </Section>
   );
 };
 
 const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png');
   background-size: cover;
   background-position: center;
@@ -58,15 +74,17 @@ const Section = styled.div`
   width: 100%;
   height: 100vh;
   z-index: -1;
+  padding: 40px 240px;
+  box-sizing: border-box;
 `;
 
 const Banner = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: fit-content;
-  justify-content: center;
-  padding: 40px 240px;
+  width: 100%;
+  margin-left: 24px;
+  justify-content: flex-start;
 `;
 
 const BannerText = styled.div`
@@ -78,7 +96,6 @@ const BannerText = styled.div`
   margin-bottom: 1rem;
   margin-right: 4rem;
   line-height: 150%;
-  font-family: Pretendard;
   h1 {
     font-size: 2rem;
     line-height: 150%;
@@ -129,6 +146,35 @@ const Progress = styled.div`
     margin: 0;
     height: 32px;
     cursor: default;
+  }
+`;
+
+const Contents = styled.div`
+  margin-top: 192px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Header = styled.div`
+  margin-bottom: 72px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  h3 {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    color: #1e1e1e;
+  }
+  div button {
+    color: #1e1e1e;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
   }
 `;
 

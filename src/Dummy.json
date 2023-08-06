@@ -1,0 +1,53 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 2,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 3,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 4,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 5,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 6,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    },
+    {
+      "id": 7,
+      "img": "https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png",
+      "title": "환경을 생각하는 인공폭포",
+      "date": "2023.07.24",
+      "writer": "김플로"
+    }
+  ]
+}

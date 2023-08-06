@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as Polygon } from './assets/polygon.svg';
 import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
-import ContentsList from './ContentsList';
 import arrowIcon from './assets/Vector.svg';
+import ArticleItem from './ArticleItem';
 
 const Home = () => {
   const [progress, setProgress] = useState(0);
@@ -51,13 +51,13 @@ const Home = () => {
 
       <Contents>
         <Header>
-          <h3>플로밍, 왜 해야 할까요?</h3>
+          <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
           <div>
             <button>전체보기</button>
             <img src={arrowIcon} />
           </div>
         </Header>
-        <ContentsList />
+        <ArticleItem />
       </Contents>
     </Section>
   );
@@ -158,7 +158,7 @@ const Contents = styled.div`
 `;
 
 const Header = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 72px;
   width: 100%;
   display: flex;
   flex-direction: row;

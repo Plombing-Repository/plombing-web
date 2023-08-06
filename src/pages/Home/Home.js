@@ -4,6 +4,7 @@ import { ReactComponent as Polygon } from './assets/polygon.svg';
 import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
 import arrowIcon from './assets/Vector.svg';
 import ArticleItem from './ArticleItem';
+import RecommendItem from './RecommendItem';
 
 const Home = () => {
   const [progress, setProgress] = useState(0);
@@ -49,16 +50,27 @@ const Home = () => {
         <LastPhaseModel />
       </Banner>
 
-      <Contents>
+      <Articles>
         <Header>
           <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
-          <div>
+          <ViewAllBtn>
             <button>전체보기</button>
             <img src={arrowIcon} />
-          </div>
+          </ViewAllBtn>
         </Header>
         <ArticleItem />
-      </Contents>
+      </Articles>
+
+      <Recommends>
+        <Header>
+          <h3>플로밍 할 만한 산을 추천해드려요!</h3>
+          <ViewAllBtn>
+            <button>전체보기</button>
+            <img src={arrowIcon} />
+          </ViewAllBtn>
+        </Header>
+        <RecommendItem />
+      </Recommends>
     </Section>
   );
 };
@@ -149,8 +161,8 @@ const Progress = styled.div`
   }
 `;
 
-const Contents = styled.div`
-  margin-top: 192px;
+const Articles = styled.div`
+  margin-top: 160px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -169,13 +181,24 @@ const Header = styled.div`
     letter-spacing: -0.5px;
     color: #1e1e1e;
   }
-  div button {
+`;
+
+const ViewAllBtn = styled.div`
+  button {
     color: #1e1e1e;
     background-color: white;
     border: none;
     font-size: 16px;
     font-weight: 600;
   }
+`;
+
+const Recommends = styled.div`
+  margin-top: 160px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default Home;

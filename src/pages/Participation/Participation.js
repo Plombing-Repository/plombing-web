@@ -4,18 +4,18 @@ import Button from './Button';
 import Box from './Box';
 
 const StyledH3 = styled.h3`
-  font-size: 36px;
-  margin-bottom: 10px; // h3과 h6 사이의 간격을 좁히기 위한 값을 조정하실 수 있습니다.
+  font-size: 28px;
+  margin-bottom: -10px;
 `;
 
 const StyledH6 = styled.h6`
-  font-size: 18px;
+  font-size: 14px;
 `;
 
 const FlexCenterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; // 가로 방향 중앙 정렬
+  align-items: center;
   justify-content: center; // 세로 방향 중앙 정렬
   width: 100vw; // 뷰포트의 전체 너비로 설정
   height: 100vh; // 뷰포트의 전체 높이로 설정
@@ -24,8 +24,9 @@ const FlexCenterContainer = styled.div`
 `;
 const BoxWrapper = styled.div`
   display: flex;
-  justify-content: center; // 가운데 정렬
-  gap: 20px; // Box 사이의 간격. 필요에 따라 조절 가능
+  justify-content: center;
+  gap: 35px;
+  margin-bottom: 30px;
 `;
 
 const Participation = () => {

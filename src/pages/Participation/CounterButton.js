@@ -27,7 +27,9 @@ const CounterButton = () => {
 
   return (
     <CounterContainer>
-      <StyledButton onClick={() => setCount(count - 1)}>-</StyledButton>
+      <StyledButton onClick={() => (count > 0 ? setCount(count - 1) : null)}>
+        -
+      </StyledButton>
       <span>{count}</span>
       <StyledButton onClick={() => setCount(count + 1)}>+</StyledButton>
     </CounterContainer>

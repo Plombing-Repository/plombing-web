@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'; // Import prop-types
 import CounterButton from './CounterButton';
 
 const BoxContainer = styled.div`
-  width: 279px;
-  height: 329px;
+  width: 250px;
+  height: 280px;
   flex-shrink: 0;
   border-radius: 21.603px;
   background-color: #99e28d;
@@ -34,6 +34,8 @@ const BoxQuantity = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 160%;
+
+  margin-top: 5px;
 `;
 
 const Box = ({ volume, imageSource }) => {

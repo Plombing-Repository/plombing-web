@@ -1,81 +1,107 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { ReactComponent as Polygon } from './assets/polygon.svg';
-import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
 import arrowIcon from './assets/Vector.svg';
 import ArticleItem from './ArticleItem';
 import Footer from './Footer';
+import Header from './Header';
+import Dummy from '../../Dummy.json';
+import Banner from './Banner';
 
 const Home = () => {
-  const [progress, setProgress] = useState(0);
   const [percentage, setPercentage] = useState(0);
+  const [phaseModel, setPhaseModel] = useState('');
+  const [progress, setProgress] = useState(0);
+  const [background, setBackground] = useState('');
 
+  const phaseModel1 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/a16328c0-b47e-46f8-b7ed-7aa0800e8233/image.svg';
+  const phaseModel2 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/c28c1724-cc59-48f1-a124-ea8a48f8b528/image.svg';
+  const phaseModel3 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
+
+  const number = Dummy.plombing_process.plombing;
+  let tmpProgress = 0;
   useEffect(() => {
-    setProgress(340);
-    const timer = setInterval(() => {
-      if (percentage < 95) {
-        // 후에 340, 95을 실제 퍼센테이지에 맞게 수정
-        setPercentage((prevPercentage) => prevPercentage + 1);
+    function fetchData() {
+      tmpProgress = Dummy.plombing_process.progress;
+      setProgress(tmpProgress);
+      if (tmpProgress < 30) {
+        setPhaseModel(phaseModel1);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/0e919ba0-2cb2-481a-a1d9-efad4611e876/image.svg',
+        );
+      } else if (tmpProgress < 60) {
+        setPhaseModel(phaseModel2);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png',
+        );
       } else {
-        clearInterval(timer);
+        setPhaseModel(phaseModel3);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png',
+        );
       }
-    }, 20);
+    }
+    fetchData();
+    const timer = setInterval(
+      () => {
+        if (percentage < tmpProgress) {
+          setPercentage((prevPercentage) => prevPercentage + 1);
+        } else {
+          clearInterval(timer);
+        }
+      },
+      (15 / tmpProgress) * 100,
+    );
     return () => clearInterval(timer);
   }, [percentage]);
-
   return (
-    <>
-      <Section>
-        <Banner>
-          <BannerText>
-            <h1>
-              운동하며 환경보호까지!
-              <br />
-              마운틴 플로깅, 플로밍
-            </h1>
-            <h3>
-              지금까지
-              <span style={{ fontSize: '28px', color: 'black' }}> 341명</span>이
-              플로밍했어요
-            </h3>
-            <Progress style={{ width: `${progress + 20}px` }}>
-              <p>{percentage}%</p>
-              <Polygon style={{ marginRight: '15px' }} />
-            </Progress>
-            <div className="progress-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${progress}px`, background: '#80d088' }}
-              ></div>
-            </div>
-            <button onClick={() => window.location.replace('/flombing')}>
-              플로밍 하기
-            </button>
-          </BannerText>
-          <LastPhaseModel />
-        </Banner>
-
+    <Section>
+      <StyledHeader />
+      <ContentsSection $background={background}>
+        <Banner
+          percentage={percentage}
+          progress={progress}
+          number={number}
+          phaseModel={phaseModel}
+        />
         <Contents>
-          <Header>
+          <Title>
             <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
             <div>
               <button>전체보기</button>
               <img src={arrowIcon} />
             </div>
-          </Header>
+          </Title>
           <ArticleItem />
         </Contents>
-      </Section>
+      </ContentsSection>
       <Footer />
-    </>
+    </Section>
   );
 };
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png');
+  height: fit-content;
+`;
+
+const StyledHeader = styled(Header)`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+`;
+
+const ContentsSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: ${(props) => `url(${props.$background})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -83,80 +109,8 @@ const Section = styled.div`
   height: fit-content;
   padding: 40px 240px;
   box-sizing: border-box;
-  z-index: -1;
   padding: 40px 240px;
   box-sizing: border-box;
-`;
-
-const Banner = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin-left: 24px;
-  justify-content: flex-start;
-`;
-
-const BannerText = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  color: #000;
-  text-align: start;
-  margin-bottom: 1rem;
-  margin-right: 4rem;
-  line-height: 150%;
-  h1 {
-    font-size: 2rem;
-    line-height: 150%;
-  }
-
-  h3 {
-    font-size: 1.4rem;
-    letter-spacing: -0.5px;
-    color: #3f3f3f;
-    margin-top: 10px;
-  }
-  .progress-container,
-  .progress-bar {
-    width: 370px;
-    height: 12px;
-    border-radius: 20px;
-    background: #fff;
-    transition: all 2s ease-out;
-  }
-  button {
-    width: fit-content;
-    height: 64px;
-    padding: 16px 60px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    background: #99e28d;
-    border-radius: 16px;
-    border: none;
-    letter-spacing: -0.5px;
-    margin-top: 52px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-`;
-
-const Progress = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: relative;
-  bottom: 8px;
-  transition: all 2s ease-out;
-  p {
-    font-size: 20px;
-    margin: 0;
-    height: 32px;
-    cursor: default;
-  }
 `;
 
 const Contents = styled.div`
@@ -165,10 +119,9 @@ const Contents = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 192px;
 `;
 
-const Header = styled.div`
+const Title = styled.div`
   margin-bottom: 72px;
   width: 100%;
   display: flex;
@@ -182,7 +135,7 @@ const Header = styled.div`
   }
   div button {
     color: #1e1e1e;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     border: none;
     font-size: 16px;
     font-weight: 600;

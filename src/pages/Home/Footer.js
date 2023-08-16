@@ -26,10 +26,10 @@ const Section = styled.section`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/915c841c-f51c-47bd-95e2-88e50b5e7b71/image.png');
+  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/2f081aed-4ec6-452c-97ca-d3e7d6fdea03/image.svg');
+  background-size: cover;
+  background-position: bottom;
   padding: 60px 240px 40px 240px;
-  position: absolute;
-  bottom: -1200px;
   button {
     width: 100px;
     height: 32px;

@@ -55,7 +55,7 @@ const Wrap = styled.div`
   flex-direction: row;
   .slick-list {
     width: 776px;
-    height: 248px;
+    height: 250px;
   }
   .slick-prev::before,
   .slick-next:before {

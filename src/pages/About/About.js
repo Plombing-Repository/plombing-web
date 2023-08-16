@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import description from './assets/description.json';
-import { ReactComponent as Plombing } from './assets/plombing.svg';
 import { ReactComponent as Phase } from './assets/Group.svg';
 import Header from '../Home/Header';
 const About = () => {
@@ -21,7 +20,10 @@ const About = () => {
             플로밍은 줍다를 뜻하는 &apos;Plocka up&apos;과 산을 뜻하는
             &apos;Climbing&apos;을 합한 합성어로 산에서 하는 플로깅을 뜻합니다.
           </p>
-          <PlombingImg />
+          <PlombingImg
+            src="https://velog.velcdn.com/images/ea_st_ring/post/46ad1be8-7b88-4aa2-903e-ca09b8818fdd/image.svg"
+            alt="what_is_plombing"
+          />
         </TextBox>
 
         <TextBox>
@@ -153,7 +155,7 @@ const Subtitle = styled.h3`
   margin-bottom: 1.6rem;
 `;
 
-const PlombingImg = styled(Plombing)`
+const PlombingImg = styled.img`
   width: 700px;
   align-self: center;
   margin-top: 2rem;

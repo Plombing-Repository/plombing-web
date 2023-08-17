@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import arrowIcon from '../Article/assets/Vector.svg';
-import ArticleItem from '../Article/ArticleItem';
 import Footer from './Footer';
 import Header from './Header';
 import Dummy from '../../Dummy.json';
 import Banner from './Banner';
 import { Link } from 'react-router-dom';
+import MainArticle from './MainArticle';
+import RecommendItem from './Recommend';
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
@@ -69,7 +70,7 @@ const Home = () => {
         />
         <Contents>
           <Title>
-            <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
+            <h3>요새 뜨는 환경 아티클을 둘러보세요.</h3>
             <div>
               <button>
                 <Link to="/community">
@@ -79,8 +80,20 @@ const Home = () => {
               </button>
             </div>
           </Title>
-          <ArticleItem />
+          <MainArticle />
         </Contents>
+        <Title>
+          <h3>플로밍 할 만한 산을 추천해드려요!</h3>
+          <div>
+            <button>
+              <Link to="/community">
+                <p>전체보기</p>
+                <img src={arrowIcon} />
+              </Link>
+            </button>
+          </div>
+        </Title>
+        <RecommendItem />
       </ContentsSection>
       <Footer />
     </Section>
@@ -93,6 +106,8 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   height: fit-content;
+  min-height: 100vh;
+  flex: 1;
 `;
 
 const StyledHeader = styled(Header)`
@@ -114,16 +129,25 @@ const ContentsSection = styled.div`
   height: fit-content;
   padding: 40px 240px;
   box-sizing: border-box;
-  padding: 40px 240px;
-  box-sizing: border-box;
+  @media screen and (max-width: 500px) {
+    margin: 0px;
+    background-size: 100%;
+    background-position: 0px 0px;
+    top: 0;
+    padding: 40px 16px;
+  }
 `;
 
 const Contents = styled.div`
   margin-top: 192px;
   width: 100%;
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    height: 800px;
+  }
 `;
 
 const Title = styled.div`
@@ -133,10 +157,17 @@ const Title = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 500px) {
+    margin: 0px;
+    flex-direction: column;
+  }
   h3 {
     font-size: 1.4rem;
     letter-spacing: -0.5px;
     color: #1e1e1e;
+    @media screen and (max-width: 500px) {
+      font-size: 1.2rem;
+    }
   }
   div button {
     color: #1e1e1e;

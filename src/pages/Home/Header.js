@@ -21,7 +21,9 @@ const Header = () => {
   }, []);
 
   const backgroundColor =
-    scrollPosition > 10 || location.pathname === '/about'
+    scrollPosition > 10 ||
+    location.pathname === '/about' ||
+    location.pathname.startsWith('/article')
       ? 'rgba(255, 255, 255, 0.7)'
       : '#fff';
 
@@ -32,8 +34,8 @@ const Header = () => {
         onClick={() => window.location.replace('/')}
       />
       <Menu>
-        <MenuLink to="community">Community</MenuLink>
-        <MenuLink to="about">Plombing</MenuLink>
+        <MenuLink to="/community">Community</MenuLink>
+        <MenuLink to="/about">Plombing</MenuLink>
       </Menu>
     </Section>
   );

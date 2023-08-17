@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -13,7 +14,9 @@ const Footer = () => {
           시대가 도래했다&quot; 말했다.
         </p>
       </TextBox>
-      <button>read more</button>
+      <button>
+        <Link to="/article/1">read more</Link>
+      </button>
     </Section>
   );
 };
@@ -40,6 +43,10 @@ const Section = styled.section`
     cursor: pointer;
     &:hover {
       background-color: rgba(255, 255, 255, 0.6);
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
     }
   }
 `;

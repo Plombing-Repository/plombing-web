@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import arrowIcon from './assets/Vector.svg';
-import ArticleItem from './ArticleItem';
+import arrowIcon from '../Article/assets/Vector.svg';
+import ArticleItem from '../Article/ArticleItem';
 import Footer from './Footer';
 import Header from './Header';
 import Dummy from '../../Dummy.json';
 import Banner from './Banner';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
@@ -70,8 +71,12 @@ const Home = () => {
           <Title>
             <h3>요새 뜨는 환경이슈들을 둘러보세요.</h3>
             <div>
-              <button>전체보기</button>
-              <img src={arrowIcon} />
+              <button>
+                <Link to="/community">
+                  <p>전체보기</p>
+                  <img src={arrowIcon} />
+                </Link>
+              </button>
             </div>
           </Title>
           <ArticleItem />
@@ -139,6 +144,20 @@ const Title = styled.div`
     border: none;
     font-size: 16px;
     font-weight: 600;
+    a {
+      text-decoration: none;
+      color: #1e1e1e;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin-right: 8px;
+      }
+      img {
+        margin-top: 2px;
+      }
+    }
   }
 `;
 

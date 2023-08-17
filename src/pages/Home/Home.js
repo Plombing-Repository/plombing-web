@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import arrowIcon from './assets/Vector.svg';
-import ArticleItem from './ArticleItem';
+import arrowIcon from '../Article/assets/Vector.svg';
+import ArticleItem from '../Article/ArticleItem';
 import Footer from './Footer';
 import Header from './Header';
 import Dummy from '../../Dummy.json';

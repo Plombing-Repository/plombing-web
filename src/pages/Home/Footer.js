@@ -48,6 +48,17 @@ const Section = styled.section`
       text-decoration: none;
       color: #fff;
     }
+    @media screen and (max-width: 500px) {
+      width: 80px;
+      height: 24px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px 60px;
   }
 `;
 
@@ -65,9 +76,20 @@ const TextBox = styled.div`
     font-weight: 600;
     margin-bottom: 1rem;
     margin-top: 0;
+    @media screen and (max-width: 500px) {
+      font-size: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
   }
   p {
     line-height: 150%;
+    @media screen and (max-width: 500px) {
+      font-size: 0.6rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    justify-content: flex-start;
+    height: 92px;
   }
 `;
 

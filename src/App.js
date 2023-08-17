@@ -31,6 +31,10 @@ function App() {
 export default App;
 
 const GlobalStyle = createGlobalStyle`
+  *::selection{
+    background-color: #a3cca2;
+    color: black;
+  }
   body {
     font-family: Pretendard;
   }

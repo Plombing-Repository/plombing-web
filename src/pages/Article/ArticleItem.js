@@ -60,6 +60,11 @@ const Wrap = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  .slick-slider,
+  .slick-list,
+  .slick-track {
+    height: 280px !important;
+  }
   .slick-list {
     width: 776px;
     height: 250px;
@@ -95,7 +100,13 @@ const Item = styled.div`
   border-radius: 20px;
   border: 0.869px solid #c4c4c4;
   background: #fff;
+  margin-top: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
 `;
 
 const Thumbnail = styled.img`

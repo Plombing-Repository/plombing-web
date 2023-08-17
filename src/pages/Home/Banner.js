@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as Polygon } from './assets/polygon.svg';
 
 const Banner = (props) => {
   const { percentage, progress, number, phaseModel } = props;
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      // cleanup
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <BannerWrapper>
       <BannerText>
@@ -19,7 +32,14 @@ const Banner = (props) => {
           </span>
           이 플로밍했어요
         </h3>
-        <Progress style={{ width: `${progress * 3.4 + 20}px` }}>
+        <Progress
+          style={{
+            width:
+              width > 500
+                ? `${progress * 3.4 + 20}px`
+                : `${progress * 3.4 + 35}px`,
+          }}
+        >
           <p>{percentage}%</p>
           <Polygon style={{ marginRight: '15px' }} />
         </Progress>
@@ -52,6 +72,15 @@ const BannerWrapper = styled.div`
     width: 680px;
     height: 449px;
   }
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 300px;
+      margin-right: 64px;
+    }
+  }
 `;
 
 const BannerText = styled.div`
@@ -75,6 +104,9 @@ const BannerText = styled.div`
     color: #3f3f3f;
     margin-top: 10px;
     letter-spacing: 0.5px;
+    @media screen and (max-width: 500px) {
+      margin-bottom: 64px;
+    }
   }
   .progress-container,
   .progress-bar {
@@ -100,6 +132,12 @@ const BannerText = styled.div`
       cursor: pointer;
     }
   }
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
 `;
 
 const Progress = styled.div`
@@ -115,6 +153,9 @@ const Progress = styled.div`
     margin: 0;
     height: 32px;
     cursor: default;
+  }
+  @media screen and (max-width: 500px) {
+    align-self: start;
   }
 `;
 

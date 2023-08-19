@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Community from './pages/Community/Community';
 import About from './pages/About/About';
 import Articles from './pages/Article/Articles';
+import Participation from './pages/Participate/Participation';
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -23,6 +24,7 @@ function App() {
         <Route path="/community" element={<Community />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/article/:id" element={<Articles />} />
+        <Route path="plombing" element={<Participation />} />
       </Routes>
     </Container>
   );

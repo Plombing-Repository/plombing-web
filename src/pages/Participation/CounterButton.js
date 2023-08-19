@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
   border-radius: 100%;
   background-color: #ffffff;
-  border-color: #ffffff;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #ebebeb;
+  cursor: pointer;
+  &:active {
+    background-color: #ebebeb;
+  }
 `;
 
 const CounterContainer = styled.div`
@@ -13,25 +19,34 @@ const CounterContainer = styled.div`
   justify-content: space-between;
   background-color: white;
   border: 1px solid #ddd;
-  border-radius: 799.139px;
-  box-shadow: 0px -4.508937835693359px 22.544689178466797px rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  box-shadow: 0px -5px 22px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  width: 210px;
-  height: 20px;
+  width: 160px;
+  height: 16px;
   flex-shrink: 0;
-  margin: auto;
+  margin-bottom: 30px;
 `;
 
-const CounterButton = () => {
-  const [count, setCount] = useState(0);
-
+const CounterButton = ({ count, setCount, total, setTotal, quantity }) => {
+  const handleDecrement = () => {
+    if (count * 1 <= 0) return;
+    setCount(count - 1);
+    setTotal(total - quantity);
+  };
+  const handleIncrement = () => {
+    setCount(count + 1);
+    setTotal(total + quantity);
+  };
   return (
     <CounterContainer>
-      <StyledButton onClick={() => (count > 0 ? setCount(count - 1) : null)}>
+      <StyledButton onClick={handleDecrement} className="counter_button">
         -
       </StyledButton>
       <span>{count}</span>
-      <StyledButton onClick={() => setCount(count + 1)}>+</StyledButton>
+      <StyledButton onClick={handleIncrement} className="counter_button">
+        +
+      </StyledButton>
     </CounterContainer>
   );
 };

@@ -1,134 +1,194 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { ReactComponent as Polygon } from './assets/polygon.svg';
-import { ReactComponent as LastPhaseModel } from './assets/last_phase.svg';
+import arrowIcon from '../Article/assets/Vector.svg';
+import Footer from './Footer';
+import Header from './Header';
+import Dummy from '../../Dummy.json';
+import Banner from './Banner';
+import { Link } from 'react-router-dom';
+import MainArticle from './MainArticle';
+import RecommendItem from './Recommend';
 
 const Home = () => {
-  const [progress, setProgress] = useState(0);
   const [percentage, setPercentage] = useState(0);
+  const [phaseModel, setPhaseModel] = useState('');
+  const [progress, setProgress] = useState(0);
+  const [background, setBackground] = useState('');
 
+  const phaseModel1 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/a16328c0-b47e-46f8-b7ed-7aa0800e8233/image.svg';
+  const phaseModel2 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/c28c1724-cc59-48f1-a124-ea8a48f8b528/image.svg';
+  const phaseModel3 =
+    'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
+
+  const number = Dummy.plombing_process.plombing;
+  let tmpProgress = 0;
   useEffect(() => {
-    setProgress(340);
-    const timer = setInterval(() => {
-      if (percentage < 95) {
-        // 후에 340, 95을 실제 퍼센테이지에 맞게 수정
-        setPercentage((prevPercentage) => prevPercentage + 1);
+    function fetchData() {
+      tmpProgress = Dummy.plombing_process.progress;
+      setProgress(tmpProgress);
+      if (tmpProgress < 30) {
+        setPhaseModel(phaseModel1);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/0e919ba0-2cb2-481a-a1d9-efad4611e876/image.svg',
+        );
+      } else if (tmpProgress < 60) {
+        setPhaseModel(phaseModel2);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png',
+        );
       } else {
-        clearInterval(timer);
+        setPhaseModel(phaseModel3);
+        setBackground(
+          'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png',
+        );
       }
-    }, 20);
+    }
+    fetchData();
+    const timer = setInterval(
+      () => {
+        if (percentage < tmpProgress) {
+          setPercentage((prevPercentage) => prevPercentage + 1);
+        } else {
+          clearInterval(timer);
+        }
+      },
+      (15 / tmpProgress) * 100,
+    );
     return () => clearInterval(timer);
   }, [percentage]);
-
   return (
     <Section>
-      <Banner>
-        <BannerText>
-          <h1>
-            운동하며 환경보호까지!
-            <br />
-            마운틴 플로깅, 플로밍
-          </h1>
-          <h3> 지금까지 341명이 플로밍했어요</h3>
-          <Progress style={{ width: `${progress + 20}px` }}>
-            <p>{percentage}%</p>
-            <Polygon style={{ marginRight: '15px' }} />
-          </Progress>
-          <div className="progress-container">
-            <div
-              className="progress-bar"
-              style={{ width: `${progress}px`, background: '#80d088' }}
-            ></div>
+      <StyledHeader />
+      <ContentsSection $background={background}>
+        <Banner
+          percentage={percentage}
+          progress={progress}
+          number={number}
+          phaseModel={phaseModel}
+        />
+        <Contents>
+          <Title>
+            <h3>요새 뜨는 환경 아티클을 둘러보세요.</h3>
+            <div>
+              <button>
+                <Link to="/community">
+                  <p>전체보기</p>
+                  <img src={arrowIcon} />
+                </Link>
+              </button>
+            </div>
+          </Title>
+          <MainArticle />
+        </Contents>
+        <Title>
+          <h3>플로밍 할 만한 산을 추천해드려요!</h3>
+          <div>
+            <button>
+              <Link to="/community">
+                <p>전체보기</p>
+                <img src={arrowIcon} />
+              </Link>
+            </button>
           </div>
-          <button onClick={() => window.location.replace('/flombing')}>
-            플로밍 하기
-          </button>
-        </BannerText>
-        <LastPhaseModel />
-      </Banner>
+        </Title>
+        <RecommendItem />
+      </ContentsSection>
+      <Footer />
     </Section>
   );
 };
 
 const Section = styled.div`
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  min-height: 100vh;
+  flex: 1;
+`;
+
+const StyledHeader = styled(Header)`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+`;
+
+const ContentsSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: ${(props) => `url(${props.$background})`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
-  z-index: -1;
+  height: fit-content;
+  padding: 40px 240px;
+  box-sizing: border-box;
+  @media screen and (max-width: 500px) {
+    margin: 0px;
+    background-size: 100%;
+    background-position: 0px 0px;
+    top: 0;
+    padding: 40px 16px;
+  }
 `;
 
-const Banner = styled.div`
+const Contents = styled.div`
+  margin-top: 192px;
+  width: 100%;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    height: 800px;
+  }
+`;
+
+const Title = styled.div`
+  margin-bottom: 72px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: fit-content;
-  justify-content: center;
-  padding: 40px 240px;
-`;
-
-const BannerText = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  color: #000;
-  text-align: start;
-  margin-bottom: 1rem;
-  margin-right: 4rem;
-  line-height: 150%;
-  font-family: Pretendard;
-  h1 {
-    font-size: 2rem;
-    line-height: 150%;
+  justify-content: space-between;
+  @media screen and (max-width: 500px) {
+    margin: 0px;
+    flex-direction: column;
   }
-
   h3 {
     font-size: 1.4rem;
     letter-spacing: -0.5px;
-    color: #3f3f3f;
-    margin-top: 10px;
-  }
-  .progress-container,
-  .progress-bar {
-    width: 370px;
-    height: 12px;
-    border-radius: 20px;
-    background: #fff;
-    transition: all 2s ease-out;
-  }
-  button {
-    width: fit-content;
-    height: 64px;
-    padding: 16px 60px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    background: #99e28d;
-    border-radius: 16px;
-    border: none;
-    letter-spacing: -0.5px;
-    margin-top: 50px;
-    &:hover {
-      cursor: pointer;
+    color: #1e1e1e;
+    @media screen and (max-width: 500px) {
+      font-size: 1.2rem;
     }
   }
-`;
-
-const Progress = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: relative;
-  bottom: 10px;
-  transition: all 2s ease-out;
-  p {
-    font-size: 21px;
-    margin: 0;
-    height: 32px;
-    cursor: default;
+  div button {
+    color: #1e1e1e;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    a {
+      text-decoration: none;
+      color: #1e1e1e;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin-right: 8px;
+      }
+      img {
+        margin-top: 2px;
+      }
+    }
   }
 `;
 

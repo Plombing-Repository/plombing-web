@@ -27,7 +27,6 @@ const Result = () => {
             <SaveAnimalBox>
               <BlurCircle />
               <h2>오늘 내가 구한 동물</h2>
-              {/* <img src="https://velog.velcdn.com/images/ea_st_ring/post/81f787fe-9696-4601-803d-bde94db8f77d/image.svg" /> */}
               <img src="https://velog.velcdn.com/images/ea_st_ring/post/3c366ec7-c67b-42c2-8906-4db73822e9f4/image.svg" />
               <h3>아싸 너구리!</h3>
             </SaveAnimalBox>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import arrowIcon from '../Article/assets/Vector.svg';
+import arrowIcon from '../Community/Contents/Article/assets/Vector.svg';
 import Footer from './Footer';
 import Header from './Header';
 import Dummy from '../../Dummy.json';
 import Banner from './Banner';
 import { Link } from 'react-router-dom';
 import MainArticle from './MainArticle';
-import RecommendItem from './Recommend';
+import RecommendItem from '../Community/Contents/Mountain/Recommend';
 import Confetti from '../../effects/Confetti';
 
 const Home = () => {

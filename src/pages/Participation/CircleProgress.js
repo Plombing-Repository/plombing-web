@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Progress = () => {
-  const tmpProgress = 75;
+const Progress = (props) => {
+  const tmpProgress = props.progress;
   const [percentage, setPercentage] = useState(0);
   useEffect(() => {
     function simulateProgress() {
@@ -39,10 +39,10 @@ const Progress = () => {
       <CircularProgressbar
         value={percentage}
         text={`${percentage}%`}
-        strokeWidth={15}
+        strokeWidth={12}
         styles={{
           // Customize the root svg element
-          root: { width: '120px', height: '120px' },
+          root: { width: '140px', height: '140px' },
           // Customize the path, i.e. the "completed progress"
           path: {
             // Path color
@@ -70,7 +70,8 @@ const Progress = () => {
             // Text color
             fill: '#000',
             // Text size
-            fontSize: '16px',
+            fontSize: '1rem',
+            fontWeight: '500',
           },
         }}
       />

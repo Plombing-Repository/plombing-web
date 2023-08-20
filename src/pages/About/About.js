@@ -49,7 +49,9 @@ const About = () => {
           ))}
         </TextBox>
         <h1>지금까지 N명이 플로밍했어요</h1>
-        <Phase />
+        <PhaseBox>
+          <Phase />
+        </PhaseBox>
         <button onClick={() => window.location.replace('/plombing')}>
           플로밍 참여하기
         </button>
@@ -124,6 +126,9 @@ const Contents = styled.div`
       cursor: pointer;
     }
   }
+  @media screen and (max-width: 1000px) {
+    padding: 40px 36px;
+  }
 `;
 
 const TextBox = styled.div`
@@ -167,5 +172,12 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   margin-bottom: 4rem;
+`;
+
+const PhaseBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 export default About;

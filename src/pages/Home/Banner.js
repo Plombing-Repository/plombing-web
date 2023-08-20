@@ -67,13 +67,13 @@ const BannerWrapper = styled.div`
   align-items: center;
   width: 100%;
   margin-left: 24px;
-  justify-content: flex-start;
+  justify-content: center;
   img {
     width: 680px;
     height: 449px;
   }
-  @media screen and (max-width: 500px) {
-    flex-direction: column;
+  @media screen and (max-width: 1200px) {
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     img {

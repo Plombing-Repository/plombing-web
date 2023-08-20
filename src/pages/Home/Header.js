@@ -27,7 +27,8 @@ const Header = () => {
   const backgroundColor =
     scrollPosition > 10 ||
     location.pathname === '/about' ||
-    location.pathname.startsWith('/article')
+    location.pathname.startsWith('/article') ||
+    location.pathname === '/result'
       ? 'rgba(255, 255, 255, 0.7)'
       : '#fff';
 

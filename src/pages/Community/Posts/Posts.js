@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from '../Home/Header';
+import Header from '../../Home/Header';
 import { styled } from 'styled-components';
-import Post from './Post';
+import PostPreview from './PostPreview';
 import postings from './postings.json';
 
 const Board = () => {
@@ -20,13 +20,15 @@ const Board = () => {
           </div>
         </BoardHeader>
         {postingList.map((posting, index) => (
-          <Post
+          <PostPreview
             key={index}
             selected={index + 1 === selected}
             id={posting.id}
+            date={posting.date}
             likeCount={posting.likeCount}
             commentCount={posting.commentCount}
             question={posting.question}
+            description={posting.description}
             answers={posting.answers}
             setSelected={setSelected}
           />

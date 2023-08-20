@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useParams, useState } from 'react';
 import { styled } from 'styled-components';
-import Header from '../Home/Header';
+import Header from '../../../Home/Header';
 import ArticleItem from './ArticleItem';
 
 const Format = (props) => {

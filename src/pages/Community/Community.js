@@ -1,14 +1,7 @@
 import React from 'react';
-import Posts from './Posts';
-import Environment from './Environment';
 
 const Community = () => {
-  return (
-    <div>
-      <Posts />
-      <Environment />
-    </div>
-  );
+  return <div>커뮤니티</div>;
 };
 
 export default Community;

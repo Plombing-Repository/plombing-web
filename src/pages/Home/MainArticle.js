@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { styled } from 'styled-components';
-import articleInfo from '../Article/articles.json';
+import articleInfo from '../Community/Contents/Article/articles.json';
 const MainArticle = () => {
   const articles = articleInfo.articles;
   const onClickItem = useCallback((index) => {

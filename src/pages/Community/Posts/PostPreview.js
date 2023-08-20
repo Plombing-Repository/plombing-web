@@ -2,23 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './styles.css';
+import { useNavigate } from 'react-router-dom';
 
-const Post = (props) => {
+const PostPreview = (props) => {
   const {
     selected,
     id,
+    date,
     likeCount,
     commentCount,
     question,
+    description,
     answers,
     setSelected,
   } = props;
+
+  const navigate = useNavigate();
   const onClickPost = (e) => {
-    console.log(selected === true);
     if (selected === true) {
-      setSelected('');
+      navigate(`/community/${e.currentTarget.id}`, {
+        state: {
+          likeCount,
+          date,
+          question,
+          description,
+          answers,
+        },
+      });
     }
-    setSelected(e.target.parentNode.id * 1);
+    setSelected(e.currentTarget.id * 1);
   };
   return (
     <Format selected={selected} key={id} id={id} onClick={onClickPost}>
@@ -41,7 +53,12 @@ const Post = (props) => {
       {selected && (
         <TransitionGroup>
           {answers.map((answer, index) => (
-            <CSSTransition key={index} timeout={500} classNames="answer">
+            <CSSTransition
+              key={index}
+              timeout={500}
+              classNames="answer"
+              unmountOnExit
+            >
               <AnswerBox>
                 <span>A</span>
                 <p>{answer}</p>
@@ -65,6 +82,7 @@ const Format = styled.div`
   border: ${(props) =>
     props.selected ? '1px solid #76e481' : '1px solid #727272'};
   background: #fff;
+  transition: all 1s ease-in-out;
   h3 {
     font-size: 1.2rem;
     margin: 0;
@@ -116,15 +134,16 @@ const AnswerBox = styled.div`
   flex-direction: row;
   padding: 36px 24px;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 12px;
   border: 1px solid #76e481;
   margin-top: 24px;
   p {
     margin-top: 4px;
     margin-bottom: 0;
     font-weight: 600;
-    line-height: 150%;
+    line-height: 180%;
+    font-size: 1rem;
   }
 `;
 
-export default Post;
+export default PostPreview;

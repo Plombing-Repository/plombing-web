@@ -7,6 +7,9 @@ import postings from './postings.json';
 const Board = () => {
   const postingList = postings.postings;
   const [selected, setSelected] = useState('');
+  const onClickWrite = () => {
+    window.location.href = '/write';
+  };
 
   return (
     <div>
@@ -16,7 +19,7 @@ const Board = () => {
           <SearchInput placeholder="검색어를 입력하세요" />
           <img src="https://velog.velcdn.com/images/ea_st_ring/post/b262f333-3075-40ac-a4ae-763819125acc/image.svg" />
           <div>
-            <p>게시글 작성하기</p>
+            <p onClick={onClickWrite}>게시글 작성하기</p>
           </div>
         </BoardHeader>
         {postingList.map((posting, index) => (
@@ -75,6 +78,7 @@ const BoardHeader = styled.div`
       font-weight: 600;
       line-height: 150%;
       text-align: center;
+      cursor: pointer;
     }
   }
 `;

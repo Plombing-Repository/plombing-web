@@ -9,6 +9,7 @@ import Articles from './pages/Article/Articles';
 import Participation from './pages/Participation/Participation';
 import Result from './pages/Participation/Result';
 import Loading from './pages/Participation/Loading';
+import Board from './pages/Community/Board';
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -29,6 +30,7 @@ function App() {
         <Route path="plombing" element={<Participation />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/board" element={<Board />} />
       </Routes>
     </Container>
   );

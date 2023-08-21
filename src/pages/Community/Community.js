@@ -1,12 +1,7 @@
 import React from 'react';
-import Posts from './Posts';
 
 const Community = () => {
-  return (
-    <div>
-      <Posts />
-    </div>
-  );
+  return <div>커뮤니티</div>;
 };
 
 export default Community;

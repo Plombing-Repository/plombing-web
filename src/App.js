@@ -5,7 +5,12 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Community from './pages/Community/Community';
 import About from './pages/About/About';
-import Articles from './pages/Article/Articles';
+import Articles from './pages/Community/Contents/Article/Articles';
+import Participation from './pages/Participation/Participation';
+import Result from './pages/Participation/Result';
+import Loading from './pages/Participation/Loading';
+import Board from './pages/Community/Posts/Posts';
+import Post from './pages/Community/Posts/Post';
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -20,9 +25,16 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/community" element={<Community />}></Route>
+        <React.Fragment>
+          <Route path="/community" element={<Community />} />
+          <Route path="/community/:id" element={<Post />} />{' '}
+        </React.Fragment>
         <Route path="/about" element={<About />}></Route>
         <Route path="/article/:id" element={<Articles />} />
+        <Route path="plombing" element={<Participation />} />
+        <Route path="/loading" element={<Loading />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/board" element={<Board />} />
       </Routes>
     </Container>
   );

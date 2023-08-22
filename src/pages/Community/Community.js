@@ -88,7 +88,7 @@ const Community = () => {
   const [selected, setSelected] = useState('content');
   const location = useLocation();
   useEffect(() => {
-    setSelected(location.state?.selected);
+    location.state?.selected && setSelected(location.state?.selected);
   }, [location.state?.selected]);
   return (
     <Box>

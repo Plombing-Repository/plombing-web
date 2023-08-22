@@ -158,6 +158,27 @@ const Title = styled.div`
       font-size: 1.2rem;
     }
   }
+  button {
+    background: none;
+    outline: none;
+    border: none;
+  }
+  a {
+    text-decoration: none;
+    color: #1e1e1e;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    img {
+      margin-top: 2px;
+    }
+  }
 `;
 
 /** progress에 따라서 phaseModel과 backgroundImg를 설정해주는 함수

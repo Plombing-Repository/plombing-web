@@ -169,6 +169,10 @@ const BackgroundImage = styled.img`
   top: 0;
   left: 0;
   z-index: -1;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const ShareNoticeText = styled.h2`
@@ -178,6 +182,10 @@ const ShareNoticeText = styled.h2`
   letter-spacing: -0.5px;
   line-height: 150%;
   text-align: center;
+  @media screen and (max-width: 500px) {
+    font-size: 0.7rem;
+    margin-bottom: 16px;
+  }
 `;
 
 const FrameBox = styled.div`
@@ -186,6 +194,10 @@ const FrameBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 220%;
+    height: 50px;
+  }
 `;
 
 const ResultGraphic = styled.img`
@@ -204,18 +216,33 @@ const ResultGraphic = styled.img`
     }
   }
   animation: riseup 1s ease-in-out;
+  @media screen and (max-width: 500px) {
+    width: 300px;
+    margin-top: -10px;
+    padding-left: 20px;
+  }
 `;
 
 const ResultContainer = styled.div`
   width: 600px;
   height: 600px;
   display: grid;
-  grid-gap: 20px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
     'InfoResultBox InfoResultBox'
     'Animal Fitness';
+  @media screen and (max-width: 500px) {
+    width: 300px;
+    height: 400px;
+    margin-top: -10px;
+    grid-gap: 16px;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+  }
 `;
 
 const InfoResultBox = styled.div`
@@ -245,6 +272,10 @@ const InfoResultBox = styled.div`
       transform: translateY(0px);
     }
   }
+  @media screen and (max-width: 500px) {
+    width: 300px;
+    height: 200px;
+  }
 `;
 
 const CollectBox = styled.div`
@@ -270,6 +301,27 @@ const CollectBox = styled.div`
     font-size: 1.4rem;
     font-weight: 600;
   }
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    height: 160px;
+    h3 {
+      font-size: 0.8rem;
+    }
+    h4 {
+      font-size: 0.52rem;
+      margin-top: -32px;
+      width: 130px;
+      text-align: center;
+    }
+    img {
+      width: 100px;
+      margin: 12px 0 12px 0;
+    }
+    span {
+      font-size: 1rem;
+      margin-top: 11px;
+    }
+  }
 `;
 
 const NextLevelBox = styled.div`
@@ -289,6 +341,23 @@ const NextLevelBox = styled.div`
   h4 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    height: 160px;
+    h3 {
+      font-size: 0.8rem;
+    }
+    h4 {
+      font-size: 0.52rem;
+      margin-top: -40px;
+      width: 130px;
+      text-align: center;
+    }
+    div {
+      width: 80px;
+      margin-top: -40px;
+    }
   }
 `;
 
@@ -340,6 +409,10 @@ const Animal = styled.div`
       transform: translateY(0px);
     }
   }
+  @media screen and (max-width: 500px) {
+    width: 145px;
+    height: 188px;
+  }
 `;
 
 const SaveAnimalBox = styled.div`
@@ -360,6 +433,23 @@ const SaveAnimalBox = styled.div`
   h3 {
     font-size: 0.9rem;
     margin: 0;
+  }
+  @media screen and (max-width: 500px) {
+    width: 145px;
+    height: 160px;
+    h2 {
+      font-size: 0.8rem;
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+    img {
+      width: 130px;
+      margin-top: 10px;
+    }
+    h3 {
+      font-size: 0.7rem;
+      margin-top: -10px;
+    }
   }
 `;
 
@@ -403,6 +493,23 @@ const Fitness = styled.div`
       transform: translateY(0px);
     }
   }
+  @media screen and (max-width: 500px) {
+    width: 145px;
+    height: 188px;
+    span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      position: absolute;
+      &:nth-child(2) {
+        bottom: 100px;
+        left: 38px;
+      }
+      &:last-child {
+        bottom: 84px;
+        left: 38px;
+      }
+    }
+  }
 `;
 
 const FitnessBox = styled.div`
@@ -422,6 +529,26 @@ const FitnessBox = styled.div`
   h3 {
     font-size: 0.9rem;
     margin: 0;
+  }
+  @media screen and (max-width: 500px) {
+    width: 145px;
+    height: 160px;
+    h2 {
+      font-size: 0.8rem;
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+    img {
+      width: 96px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    h3 {
+      width: 130px;
+      text-align: center;
+      font-size: 0.7rem;
+      margin-top: 10px;
+    }
   }
 `;
 

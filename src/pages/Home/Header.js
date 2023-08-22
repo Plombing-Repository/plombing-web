@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Logo } from './assets/logo.svg';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollPosition(position);
   };
   const toggleMenu = () => {
-    const menu = document.querySelector('.menu');
-    menu.classList.toggle('active');
+    // const menu = document.querySelector('.menu');
+    // menu.classList.toggle('active');
+    setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
@@ -33,18 +36,21 @@ const Header = () => {
       : '#fff';
 
   return (
-    <Section style={{ background: backgroundColor }}>
-      <Icons>
-        <StyledLogo onClick={() => window.location.replace('/')} />
-        <ToggleButton onClick={toggleMenu}>
-          <img src="https://velog.velcdn.com/images/ea_st_ring/post/a636325f-004f-4e10-ba84-7836707cdaf1/image.svg" />
-        </ToggleButton>
-      </Icons>
-      <Menu className="menu">
-        <MenuLink to="/community">Community</MenuLink>
-        <MenuLink to="/about">Plombing</MenuLink>
-      </Menu>
-    </Section>
+    <>
+      <MobileMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+      <Section style={{ background: backgroundColor }}>
+        <Icons>
+          <StyledLogo onClick={() => window.location.replace('/')} />
+          <ToggleButton onClick={toggleMenu}>
+            <img src="https://velog.velcdn.com/images/ea_st_ring/post/a636325f-004f-4e10-ba84-7836707cdaf1/image.svg" />
+          </ToggleButton>
+        </Icons>
+        <Menu className="menu">
+          <MenuLink to="/community">Community</MenuLink>
+          <MenuLink to="/about">Plombing</MenuLink>
+        </Menu>
+      </Section>
+    </>
   );
 };
 
@@ -121,7 +127,7 @@ const Menu = styled.div`
     background-color: white;
     top: 60px;
     &.active {
-      display: flex;
+      display: none;
     }
   }
 `;

@@ -20,6 +20,18 @@ const Participation = () => {
         gender: selected,
       },
     });
+    // if ((countTen || countTwenty || countFifty) && selected) {
+    //   navigate('/loading', {
+    //     state: {
+    //       total,
+    //       gender: selected,
+    //     },
+    //   });
+    // } else if (!(countTen || countTwenty || countFifty) && selected) {
+    //   window.scrollTo(0, 20);
+    // } else {
+    //   window.scrollTo(0, 900);
+    // }
   };
 
   const handleGender = (e) => {
@@ -112,7 +124,11 @@ const Participation = () => {
           <h3>지구의 쓰레기가 모여들고 있어요!</h3>
           <h4>건강한 환경에 기여하고 있습니다.</h4>
         </ResultTextBox>
-        <StyledButton type="button" onClick={onSubmit}>
+        <StyledButton
+          type="button"
+          onClick={onSubmit}
+          disabled={!((countTen || countTwenty || countFifty) && selected)}
+        >
           결과 보기
         </StyledButton>
       </FlexCenterContainer>

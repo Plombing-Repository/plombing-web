@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
-const Writing = () => {
+const Writing = (props) => {
+  const setSelect = props.setSelect;
   const [titleInput, setTitleInput] = useState('');
   const [descInput, setDescInput] = useState('');
   const handleInput = (e, setValue) => {
     setValue(e.target.value);
   };
   const onClickBack = () => {
-    window.history.back();
+    setSelect('board');
   };
 
   const onClickPost = () => {

@@ -46,6 +46,10 @@ function App() {
 export default App;
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   *::selection{
     background-color: #a3cca2;
     color: black;

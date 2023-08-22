@@ -20,6 +20,18 @@ const Participation = () => {
         gender: selected,
       },
     });
+    // if ((countTen || countTwenty || countFifty) && selected) {
+    //   navigate('/loading', {
+    //     state: {
+    //       total,
+    //       gender: selected,
+    //     },
+    //   });
+    // } else if (!(countTen || countTwenty || countFifty) && selected) {
+    //   window.scrollTo(0, 20);
+    // } else {
+    //   window.scrollTo(0, 900);
+    // }
   };
 
   const handleGender = (e) => {
@@ -112,7 +124,11 @@ const Participation = () => {
           <h3>지구의 쓰레기가 모여들고 있어요!</h3>
           <h4>건강한 환경에 기여하고 있습니다.</h4>
         </ResultTextBox>
-        <StyledButton type="button" onClick={onSubmit}>
+        <StyledButton
+          type="button"
+          onClick={onSubmit}
+          disabled={!((countTen || countTwenty || countFifty) && selected)}
+        >
           결과 보기
         </StyledButton>
       </FlexCenterContainer>
@@ -124,11 +140,20 @@ const StyledH3 = styled.h3`
   font-size: 1.8rem;
   margin-bottom: -10px;
   margin-top: 0;
+  @media screen and (max-width: 500px) {
+    font-size: 1.48rem;
+    text-align: center;
+  }
 `;
 
 const StyledH6 = styled.h6`
   font-size: 1rem;
   margin-bottom: 48px;
+  @media screen and (max-width: 500px) {
+    font-weight: 500;
+    width: 80%;
+    text-align: center;
+  }
 `;
 
 const FlexCenterContainer = styled.div`
@@ -143,6 +168,9 @@ const FlexCenterContainer = styled.div`
   box-sizing: border-box;
   @media screen and (max-width: 500px) {
     padding: 40px 16px;
+    img {
+      width: 50%;
+    }
   }
 `;
 const BoxWrapper = styled.div`
@@ -150,6 +178,9 @@ const BoxWrapper = styled.div`
   justify-content: center;
   gap: 35px;
   margin-bottom: 120px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const CollectImage = styled.img`
@@ -171,6 +202,13 @@ const ResultTextBox = styled.div`
     margin-bottom: 0;
     font-size: 1.4rem;
   }
+  @media screen and (max-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      position: absolute;
+      bottom: 302px;
+    }
+  }
 `;
 
 const SelectGenderBox = styled.div`
@@ -178,7 +216,10 @@ const SelectGenderBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: 100px;
+  @media screen and (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 const SelectButtonBox = styled.div`
@@ -188,6 +229,9 @@ const SelectButtonBox = styled.div`
   justify-content: space-around;
   width: 500px;
   height: 100px;
+  @media screen and (max-width: 500px) {
+    width: 270px;
+  }
 `;
 
 const GenderFormat = styled.div`
@@ -210,6 +254,13 @@ const GenderFormat = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  @media screen and (max-width: 500px) {
+    div:nth-child(2) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 

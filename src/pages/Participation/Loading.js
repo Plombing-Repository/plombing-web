@@ -26,6 +26,7 @@ const Loading = () => {
   const kcal = 525;
   useEffect(() => {
     window.scrollTo(0, 0);
+
     setTimeout(() => {
       navigate('/result', {
         state: {

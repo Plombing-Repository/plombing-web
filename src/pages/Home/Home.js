@@ -14,8 +14,10 @@ const Home = () => {
   const [percentage, setPercentage] = useState(0);
   const [phaseModel, setPhaseModel] = useState('');
   const [progress, setProgress] = useState(0);
-  const [background, setBackground] = useState('');
+  const [background, setBackground] = useState();
   const [isVisible, setIsVisible] = useState(false);
+  const [progressBarColor, setProgressBarColor] = useState();
+  const [participateBtnColor, setParticitateBtnColor] = useState();
 
   const number = Dummy.plombing_process.plombing;
   let tmpProgress = 0;
@@ -23,9 +25,12 @@ const Home = () => {
     function fetchData() {
       tmpProgress = Dummy.plombing_process.progress * 1;
       setProgress(tmpProgress);
-      const { phaseModel, backgroundImg } = setPhase(tmpProgress);
+      const { phaseModel, background, progressBarColor, participateBtnColor } =
+        setPhase(tmpProgress);
       setPhaseModel(phaseModel);
-      setBackground(backgroundImg);
+      setBackground(background);
+      setProgressBarColor(progressBarColor);
+      setParticitateBtnColor(participateBtnColor);
       if (tmpProgress === 100) {
         setTimeout(() => {
           setIsVisible(true);
@@ -56,6 +61,7 @@ const Home = () => {
           progress={progress}
           number={number}
           phaseModel={phaseModel}
+          color={[progressBarColor, participateBtnColor]}
         />
         <Contents>
           <Title>
@@ -110,7 +116,7 @@ const ContentsSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: ${(props) => `url(${props.$background})`};
+  background: ${(props) => `${props.$background}`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -181,11 +187,11 @@ const Title = styled.div`
   }
 `;
 
-/** progress에 따라서 phaseModel과 backgroundImg를 설정해주는 함수
+/** progress에 따라서 phaseModel, background, progressBar, participateBtn를 설정해주는 함수
  * @param {number} progress
- * @returns {object} { phaseModel, backgroundImg }
+ * @returns {object} { phaseModel, background, progressBar, participateBtn }
  * @example
- * const { phaseModel, backgroundImg } = setPhase(30);
+ * const { phaseModel, background, progressBar, participateBtn } = setPhase(30);
  *
  **/
 const setPhase = (progress) => {
@@ -195,25 +201,36 @@ const setPhase = (progress) => {
     'https://velog.velcdn.com/images/ea_st_ring/post/c28c1724-cc59-48f1-a124-ea8a48f8b528/image.svg';
   const phaseModel3 =
     'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
-  const background1 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/0e919ba0-2cb2-481a-a1d9-efad4611e876/image.svg';
-  const background2 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png';
-  const background3 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/f1209c0b-5057-47cd-a472-e454086bd453/image.png';
+  const background1 = `linear-gradient(180deg, #FFF9D9 0%, rgba(255, 255, 255, 0.00) 100%)`;
+  const background2 = `linear-gradient(180deg, #DCFFD9 0%, rgba(255, 255, 255, 0.00) 100%)`;
+  const background3 = `linear-gradient(180deg, #DCFFD9 0%, rgba(255, 255, 255, 0.00) 100%)`;
+  const progressBar1 = `#D0AC80`;
+  const progressBar2 = `#76E481`;
+  const progressBar3 = `#76E481`;
+  const participateBtn1 = `#D0AC80`;
+  const participateBtn2 = `#76E481`;
+  const participateBtn3 = `#76E481`;
   let phaseModel = '';
-  let backgroundImg = '';
+  let background = ``;
+  let progressBarColor = ``;
+  let participateBtnColor = ``;
   if (progress < 30) {
     phaseModel = phaseModel1;
-    backgroundImg = background1;
+    background = background1;
+    progressBarColor = progressBar1;
+    participateBtnColor = participateBtn1;
   } else if (progress < 60) {
     phaseModel = phaseModel2;
-    backgroundImg = background2;
+    background = background2;
+    progressBarColor = progressBar2;
+    participateBtnColor = participateBtn2;
   } else if (progress < 101) {
     phaseModel = phaseModel3;
-    backgroundImg = background3;
+    background = background3;
+    progressBarColor = progressBar3;
+    participateBtnColor = participateBtn3;
   }
-  return { phaseModel, backgroundImg };
+  return { phaseModel, background, progressBarColor, participateBtnColor };
 };
 
 export default Home;

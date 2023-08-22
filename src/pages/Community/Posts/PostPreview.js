@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './styles.css';
 import { useNavigate } from 'react-router-dom';
 
 const PostPreview = (props) => {
@@ -50,23 +48,13 @@ const PostPreview = (props) => {
           <p>{commentCount}</p>
         </InfoFormat>
       </InfoBox>
-      {selected && (
-        <TransitionGroup>
-          {answers.map((answer, index) => (
-            <CSSTransition
-              key={index}
-              timeout={500}
-              classNames="answer"
-              unmountOnExit
-            >
-              <AnswerBox>
-                <span>A</span>
-                <p>{answer}</p>
-              </AnswerBox>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      )}
+      {selected &&
+        answers.map((answer, index) => (
+          <AnswerBox key={index}>
+            <span>A</span>
+            <p>{answer}</p>
+          </AnswerBox>
+        ))}
     </Format>
   );
 };

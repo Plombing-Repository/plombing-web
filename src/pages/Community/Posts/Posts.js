@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../Home/Header';
 import { styled } from 'styled-components';
 import PostPreview from './PostPreview';
 import postings from './postings.json';
@@ -13,7 +12,6 @@ const Board = () => {
 
   return (
     <div>
-      <Header />
       <Section>
         <BoardHeader>
           <SearchInput placeholder="검색어를 입력하세요" />

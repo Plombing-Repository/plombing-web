@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import Article1 from './Article1';
 import Article2 from './Article2';
 import Article3 from './Article3';
+import Article4 from './Article4';
+import Article5 from './Article5';
+import Article6 from './Article6';
 
 const Articles = () => {
   const { id } = useParams();
@@ -11,6 +14,9 @@ const Articles = () => {
     { id: '1', content: <Article1 /> },
     { id: '2', content: <Article2 /> },
     { id: '3', content: <Article3 /> },
+    { id: '4', content: <Article4 /> },
+    { id: '5', content: <Article5 /> },
+    { id: '6', content: <Article6 /> },
   ];
 
   useEffect(() => {

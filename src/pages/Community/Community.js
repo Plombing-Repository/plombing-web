@@ -89,6 +89,7 @@ const Community = () => {
   const location = useLocation();
   useEffect(() => {
     location.state?.selected && setSelected(location.state?.selected);
+    window.scrollTo(0, 0);
   }, [location.state?.selected]);
   return (
     <Box>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from 'styled-components';
 import description from './assets/description.json';
 import { ReactComponent as Phase } from './assets/Group.svg';
 import Header from '../Home/Header';
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Section>
       <StyledHeader />

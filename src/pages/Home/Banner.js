@@ -11,7 +11,6 @@ import { ReactComponent as Polygon } from './assets/polygon.svg';
 const Banner = (props) => {
   const { percentage, progress, number, phaseModel, color } = props;
   const [width, setWidth] = useState(window.innerWidth);
-  console.log(color);
   const handleResize = () => {
     setWidth(window.innerWidth);
   };

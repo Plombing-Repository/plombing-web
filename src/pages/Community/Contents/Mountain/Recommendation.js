@@ -33,6 +33,10 @@ const Banner = styled.div`
       rgba(0, 0, 0, 0) 100%
     );
   }
+
+  @media screen and (max-width: 500px) {
+    height: 220px;
+  }
 `;
 
 const BannerContent = styled.div`
@@ -43,10 +47,18 @@ const BannerContent = styled.div`
   border-radius: 5px;
   position: relative;
   z-index: 1;
+
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    padding: 10px;
+  }
 `;
 
 const MiniTitle = styled.h2`
   font-size: 1.5rem;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
 `;
 
 const Title = styled.h1`
@@ -54,12 +66,20 @@ const Title = styled.h1`
   margin: 0;
   white-space: pre-line;
   line-height: 1.5;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Address = styled.p`
   margin-top: 10px;
   font-size: 1.2rem;
   text-align: right;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 const ContentSection = styled.section`
@@ -72,6 +92,11 @@ const ContentSection = styled.section`
   align-items: left;
   margin: auto;
   text-align: left;
+
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    padding: 10px;
+  }
 
   h3 {
     text-align: left;

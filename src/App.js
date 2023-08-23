@@ -7,12 +7,9 @@ import Community from './pages/Community/Community';
 import About from './pages/About/About';
 import Articles from './pages/Community/Contents/Article/Articles';
 import Participation from './pages/Participation/Participation';
-// import Result from './pages/Participation/Result';
+import Result from './pages/Participation/Result';
 import Loading from './pages/Participation/Loading';
-import Board from './pages/Community/Posts/Posts';
 import Post from './pages/Community/Posts/Post';
-import Writing from './pages/Community/Posts/Writing';
-import Result from './pages/Participation/ResultCopy';
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -36,9 +33,6 @@ function App() {
         <Route path="plombing" element={<Participation />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/result" element={<Result />} />
-        {/* 커뮤니티 메인 구현 후 board는 삭제 예정 */}
-        <Route path="/board" element={<Board />} />
-        <Route path="/write" element={<Writing />} />
       </Routes>
     </Container>
   );

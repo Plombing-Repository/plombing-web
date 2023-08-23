@@ -73,6 +73,9 @@ const PrevBtn = styled.button`
   border: none;
   background-color: white;
   margin-right: 36px;
+  @media screen and (max-width: 500px) {
+    width: 10px;
+  }
 `;
 
 const NextBtn = styled.button`

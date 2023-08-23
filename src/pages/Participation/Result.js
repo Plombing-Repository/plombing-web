@@ -98,7 +98,7 @@ const Result = () => {
               <ImageWrapper>
                 {isInfoShow && <CircleProgress progress={progress} />}
               </ImageWrapper>
-              <h4>다음 레벨까지 파이팅!</h4>
+              <h4>현재 2단계 플로밍 어스!</h4>
             </NextLevelBox>
           </InfoResultBox>
 
@@ -127,7 +127,7 @@ const Result = () => {
               <ImageWrapper>
                 <img src="https://velog.velcdn.com/images/ea_st_ring/post/63e37e5d-73d7-4434-99a9-5234737b849d/image.svg" />
               </ImageWrapper>
-              <h3>건강에 다가가는 작지만 의미있는 움직임이에요!</h3>
+              <h3>*스쿼트, 런지 운동 효과로 측정한 값이에요.</h3>
             </FitnessBox>
             <span>{kcal}</span>
             <br />
@@ -545,7 +545,7 @@ const FitnessBox = styled.div`
     h3 {
       width: 130px;
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 0.5rem;
       margin-top: 10px;
     }
   }

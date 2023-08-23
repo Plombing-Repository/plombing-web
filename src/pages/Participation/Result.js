@@ -10,6 +10,7 @@ import { ReactComponent as Collect } from './assets/Collect.svg';
 import { ReactComponent as Squirrel } from './assets/Squirrel.svg';
 import { ReactComponent as Gorani } from './assets/Gorani.svg';
 import { ReactComponent as Raccoon } from './assets/Raccoon.svg';
+import { ReactComponent as Earth } from './assets/Earth.svg';
 
 const Result = () => {
   const location = useLocation();
@@ -53,10 +54,7 @@ const Result = () => {
             <img src="https://velog.velcdn.com/images/ea_st_ring/post/5b07e14a-9bfb-4966-88a5-22ad38775576/image.svg" />
           </FrameBox>
 
-          <ResultGraphic
-            src="https://velog.velcdn.com/images/ea_st_ring/post/57d50fba-f605-4e6c-9751-21fd3957f979/image.svg"
-            className="result_model"
-          />
+          <ResultGraphic />
           <ResultContainer>
             <InfoResultBox id="infoBox">
               <CollectBox>
@@ -179,7 +177,7 @@ const FrameBox = styled.div`
   }
 `;
 
-const ResultGraphic = styled.img`
+const ResultGraphic = styled(Earth)`
   width: 640px;
   object-fit: cover;
   margin-right: 52px;

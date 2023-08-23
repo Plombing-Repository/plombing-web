@@ -1,64 +1,54 @@
-import React, { useCallback, useRef, useState, useEffect } from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import articles from '../Article/articles.json';
+import mountains from './mountains.json'; // JSON 데이터를 가져옴
 import PrevArrow from '../Article/assets/prev_btn.svg';
 import NextArrow from '../Article/assets/next_btn.svg';
 
 const RecommendItem = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      // cleanup
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   const settings = {
     dots: false,
-    arrow: true,
     infinite: true,
     speed: 500,
-    slidesToShow: width > 500 ? 3 : 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
 
   const slickRef = useRef(null);
+
   const onClickItem = useCallback((index) => {
     window.location.href = `/recommend/${index}`;
   }, []);
+
   const prevArrow = useCallback(() => slickRef.current.slickPrev(), []);
   const nextArrow = useCallback(() => slickRef.current.slickNext(), []);
 
   return (
     <Wrap>
       <PrevBtn onClick={prevArrow}>
-        <img src={PrevArrow} />
+        <img src={PrevArrow} alt="Previous Button" />
       </PrevBtn>
       <Slider ref={slickRef} {...settings}>
-        {articles.articles.map((article) => (
+        {mountains.mountains.map((mountain) => (
           <Item
-            key={article.id}
+            key={mountain.id}
+            imageUrl={mountain.imageUrl}
             onClick={() => {
-              onClickItem(article.id);
+              onClickItem(mountain.id);
             }}
+            // 나머지 속성들은 스타일드 컴포넌트의 스타일 속성으로 전달
           >
             <InfoBox>
-              <Title>인왕산 B코스</Title>
-              <Address>서울 종로구 무악동 산2-1</Address>
+              <Title>{mountain.title}</Title>
+              <Address>{mountain.address}</Address>
               <Info>
                 <div>
-                  <p>중급</p>
+                  <p>{mountain.level}</p>
                 </div>
                 <div>
-                  <p>4시간</p>
+                  <p>{mountain.time}</p>
                 </div>
               </Info>
             </InfoBox>
@@ -66,7 +56,7 @@ const RecommendItem = () => {
         ))}
       </Slider>
       <NextBtn onClick={nextArrow}>
-        <img src={NextArrow} />
+        <img src={NextArrow} alt="Next Button" />
       </NextBtn>
     </Wrap>
   );
@@ -115,7 +105,7 @@ const NextBtn = styled.button`
   background-color: white;
   margin-left: 36px;
 `;
-// 높이 조절 시 Item의 height, InfoBox의 height을 조절하기
+
 const Item = styled.div`
   width: 228px !important;
   height: 288px;
@@ -123,7 +113,16 @@ const Item = styled.div`
   flex-direction: column;
   border-radius: 20px;
   border: 1px solid #c4c4c4;
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/0fbf0b07-a13e-4a8d-9679-483ad3081f17/image.svg');
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(${(props) => props.imageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.3s ease;

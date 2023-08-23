@@ -56,7 +56,7 @@ const Banner = (props) => {
           플로밍 하기
         </button>
       </BannerText>
-      <img src={phaseModel} alt="phase_model" />
+      <ProgressImage src={phaseModel} alt="phase_model" />
     </BannerWrapper>
   );
 };
@@ -157,6 +157,11 @@ const Progress = styled.div`
   @media screen and (max-width: 500px) {
     align-self: start;
   }
+`;
+
+const ProgressImage = styled.img`
+  width: 559px !important;
+  height: 449px !important;
 `;
 
 export default Banner;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,8 +14,20 @@ const PostPreview = (props) => {
     answers,
     setSelected,
   } = props;
+  const ref = useRef(null);
 
   const navigate = useNavigate();
+  const wasSelected = useRef(selected);
+
+  useEffect(() => {
+    if (!wasSelected.current && selected) {
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+    wasSelected.current = selected;
+  }, [selected]);
+
   const onClickPost = (e) => {
     if (selected === true) {
       navigate(`/community/${e.currentTarget.id}`, {
@@ -27,11 +39,18 @@ const PostPreview = (props) => {
           answers,
         },
       });
+    } else {
+      setSelected(e.currentTarget.id * 1);
     }
-    setSelected(e.currentTarget.id * 1);
   };
   return (
-    <Format selected={selected} key={id} id={id} onClick={onClickPost}>
+    <Format
+      selected={selected}
+      key={id}
+      id={id}
+      onClick={onClickPost}
+      ref={ref}
+    >
       <h3>
         <span>Q</span>
         {question}

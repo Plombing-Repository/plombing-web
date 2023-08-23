@@ -1,8 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { styled } from 'styled-components';
 import PostPreview from './PostPreview';
 import postings from './postings.json';
 import InfiniteScroll from './InfiniteScroll';
+import NoSearchResult from './NoSearchResult';
 
 const Board = (props) => {
   const setSelect = props.setSelect;
@@ -13,6 +14,36 @@ const Board = (props) => {
   const [hasMoreData, setHasMoreData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const pageSize = 3; // 한 페이지에 보여줄 게시물 수 설정
+
+  const inputRef = useRef(null);
+  const [search, setSearch] = useState(false);
+
+  const [searchValue, setSearchValue] = useState('');
+  const filteredPosts = postings.postings.filter(
+    (postings) =>
+      postings.question.toLowerCase().includes(searchValue.toLowerCase()) ||
+      postings.description.toLowerCase().includes(searchValue.toLowerCase()),
+  );
+
+  const SearchResult =
+    filteredPosts.length === 0 ? (
+      <NoSearchResult />
+    ) : (
+      filteredPosts.map((posting, index) => (
+        <PostPreview
+          key={index}
+          selected={index + 1 === selected}
+          id={posting.id}
+          date={posting.date}
+          likeCount={posting.likeCount}
+          commentCount={posting.commentCount}
+          question={posting.question}
+          description={posting.description}
+          answers={posting.answers}
+          setSelected={setSelected}
+        />
+      ))
+    );
 
   // 페이지 번호를 인자로 받아 해당 페이지에 해당하는 게시물 목록을 반환하는 함수
   function fetchPostings(pageNumber) {
@@ -46,16 +77,33 @@ const Board = (props) => {
           ? UpButton.classList.add('active')
           : UpButton.classList.remove('active'));
     });
+    if (inputRef.current) {
+      inputRef.current.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          setSearch(true);
+          console.log(SearchResult);
+        }
+      });
+    }
   }, []);
 
   const onClickUpButton = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   return (
     <div>
       <Section>
         <BoardHeader>
-          <SearchInput placeholder="검색어를 입력하세요" />
+          <SearchInput
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            // onKeyDown={onEnterPress}
+            ref={inputRef}
+          />
+
           <img src="https://velog.velcdn.com/images/ea_st_ring/post/b262f333-3075-40ac-a4ae-763819125acc/image.svg" />
           <div>
             <p
@@ -67,20 +115,29 @@ const Board = (props) => {
             </p>
           </div>
         </BoardHeader>
-        {postingList.map((posting, index) => (
-          <PostPreview
-            key={index}
-            selected={index + 1 === selected}
-            id={posting.id}
-            date={posting.date}
-            likeCount={posting.likeCount}
-            commentCount={posting.commentCount}
-            question={posting.question}
-            description={posting.description}
-            answers={posting.answers}
-            setSelected={setSelected}
-          />
-        ))}
+        {search
+          ? SearchResult
+          : postingList.map((posting, index) => (
+              <>
+                <PostPreview
+                  key={index}
+                  selected={index + 1 === selected}
+                  id={posting.id}
+                  date={posting.date}
+                  likeCount={posting.likeCount}
+                  commentCount={posting.commentCount}
+                  question={posting.question}
+                  description={posting.description}
+                  answers={posting.answers}
+                  setSelected={setSelected}
+                />
+                <InfiniteScroll
+                  fetchMoreData={fetchMoreData}
+                  hasMoreData={hasMoreData}
+                />
+              </>
+            ))}
+
         <InfiniteScroll
           fetchMoreData={fetchMoreData}
           hasMoreData={hasMoreData}
@@ -119,7 +176,7 @@ const Section = styled.div`
 const BoardHeader = styled.div`
   display: flex;
   width: 100%;
-  height: 200px;
+  height: 150px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -129,15 +186,15 @@ const BoardHeader = styled.div`
   }
   div {
     display: flex;
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 12px 8px;
     width: 138px;
-    height: 18px;
+    height: 16px;
     justify-content: center;
     align-items: center;
     background-color: #99e28d;
     p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       margin: 0;
       font-weight: 600;
       line-height: 150%;
@@ -179,4 +236,5 @@ const LoadingContainer = styled.div`
   background-color: rgba(0, 0, 0, 0);
   z-index: 10;
 `;
+
 export default Board;

@@ -40,19 +40,19 @@ const Participation = () => {
   };
 
   const Counters = [
-    { count: countTen, setCount: setCountTen, quantity: 10 },
-    { count: countTwenty, setCount: setCountTwenty, quantity: 20 },
+    { count: countTen, setCount: setCountTen, quantity: 5 },
+    { count: countTwenty, setCount: setCountTwenty, quantity: 15 },
     { count: countFifty, setCount: setCountFifty, quantity: 50 },
   ];
 
   const boxData = [
     {
-      volume: '10L',
+      volume: '5L',
       imageSource:
         'https://velog.velcdn.com/images/ea_st_ring/post/2c449fe8-5355-4d8b-8862-4c6a40d09fcd/image.svg',
     },
     {
-      volume: '20L',
+      volume: '15L',
       imageSource:
         'https://velog.velcdn.com/images/ea_st_ring/post/5a2817fc-e386-4db6-b564-c67e08a775b5/image.svg',
     },
@@ -77,7 +77,7 @@ const Participation = () => {
             marginBottom: '32px',
           }}
         />
-        <StyledH3>오늘 하루 얼마 만큼의 쓰레기를 주우셨나요?</StyledH3>
+        <StyledH3>오늘 하루 얼마만큼의 쓰레기를 주우셨나요?</StyledH3>
         <StyledH6>쓰레기의 종류에 상관없이 부피를 입력해 주세요.</StyledH6>
 
         <BoxWrapper>

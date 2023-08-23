@@ -8,15 +8,14 @@ const Container = styled.div`
 `;
 
 const UnfixedHeader = styled.div`
-  border: 0.574px solid #fff;
+  border: 0.5px solid #fff;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0px -3px 40px 0px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.041415214538574px);
+  backdrop-filter: blur(8px);
 `;
 
 const MinText = styled.h6`
   color: white;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +28,6 @@ const MinText = styled.h6`
 
 const MainText = styled.h1`
   color: white;
-  font-family: Pretendard;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -50,8 +48,9 @@ const ReadMoreButton = styled.button`
   height: 34px;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1.518px solid #fff;
+  border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
 `;
 
 const Title = () => (

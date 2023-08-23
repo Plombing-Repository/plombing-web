@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import description from './assets/description.json';
-import { ReactComponent as Phase } from './assets/Group.svg';
 import Header from '../Home/Header';
 const About = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.scrollTo(0, 0);
+  }, []);
+  window.addEventListener('resize', () => {
+    setWidth(window.innerWidth);
+    console.log(window.innerWidth);
+  });
   return (
     <Section>
       <StyledHeader />
@@ -21,7 +29,7 @@ const About = () => {
             &apos;Climbing&apos;을 합한 합성어로 산에서 하는 플로깅을 뜻합니다.
           </p>
           <PlombingImg
-            src="https://velog.velcdn.com/images/ea_st_ring/post/46ad1be8-7b88-4aa2-903e-ca09b8818fdd/image.svg"
+            src="https://velog.velcdn.com/images/ea_st_ring/post/3fe444df-d998-426f-bcc8-53101b954746/image.svg"
             alt="what_is_plombing"
           />
         </TextBox>
@@ -49,9 +57,15 @@ const About = () => {
           ))}
         </TextBox>
         <h1>지금까지 N명이 플로밍했어요</h1>
-        <PhaseBox>
-          <Phase />
-        </PhaseBox>
+
+        {width > 500 ? (
+          <PhaseBox>
+            <img src="https://velog.velcdn.com/images/ea_st_ring/post/4a435970-d46a-41be-9157-7f8021f39fd9/image.svg" />
+          </PhaseBox>
+        ) : (
+          <img src="https://velog.velcdn.com/images/ea_st_ring/post/e9a83d3e-a15b-4335-827a-bf2f42c082e6/image.svg" />
+        )}
+
         <button onClick={() => window.location.replace('/plombing')}>
           플로밍 참여하기
         </button>
@@ -165,6 +179,10 @@ const PlombingImg = styled.img`
   align-self: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  @media screen and (max-width: 1000px) {
+    width: 350px;
+    height: 134px;
+  }
 `;
 
 const Image = styled.img`
@@ -180,4 +198,5 @@ const PhaseBox = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 export default About;

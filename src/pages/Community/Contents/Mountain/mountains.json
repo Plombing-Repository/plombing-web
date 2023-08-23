@@ -1,0 +1,28 @@
+{
+  "mountains": [
+    {
+      "id": 1,
+      "title": "안산",
+      "address": "서울 관악구 신림동",
+      "level": "중급",
+      "time": "약 4시간",
+      "imageUrl": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbAK6lR%2FbtsrTrjqacL%2FcymclnqU7MaHOYwWGnzAhK%2Fimg.png"
+    },
+    {
+      "id": 2,
+      "title": "북한산",
+      "address": "경기 고양시 덕양구 대서문길 375",
+      "level": "중하급",
+      "time": "약 2시간",
+      "imageUrl": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYDo16%2FbtsrZEB27X2%2FXie04qWK2vAfO7kWTN34p0%2Fimg.png"
+    },
+    {
+      "id": 3,
+      "title": "관악산",
+      "address": "경기 과천시 중앙동",
+      "level": "중급",
+      "time": "약 4시간",
+      "imageUrl": "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbINEpb%2FbtsrH6gjzxd%2FcHpZCHUjd5Y8W8sMB7iWLK%2Fimg.png"
+    }
+  ]
+}

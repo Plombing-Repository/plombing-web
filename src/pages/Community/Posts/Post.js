@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Title from '../Title';
 
-const Post = () => {
+const Post = (props) => {
   const location = useLocation();
   const { question, description, date, answers, likeCount } = location.state;
   const [input, setInput] = useState('');
@@ -26,7 +27,11 @@ const Post = () => {
   };
 
   const onClickBack = () => {
-    window.history.back();
+    navigate('/community', {
+      state: {
+        selected: 'board',
+      },
+    });
   };
 
   const onClickPost = () => {
@@ -34,63 +39,111 @@ const Post = () => {
     console.log(input);
   };
 
+  const navigate = useNavigate();
+
   return (
-    <Section>
-      <h3>
-        <span>Q</span>
-        {question}
-      </h3>
-      <DescriptionBox>
-        <h4>{description}</h4>
-      </DescriptionBox>
-      <InfoBox>
-        <InfoFormat>
-          <div>
-            <span>{date}</span>
-            <img src="https://velog.velcdn.com/images/ea_st_ring/post/76107ac3-37b1-4cdb-9c3c-d88e67f366a0/image.svg" />
-            <h6>답변</h6>
-            <span>{answers.length}</span>
-          </div>
-          <div
-            onClick={onClickLike}
-            style={{
-              backgroundColor: tmpLikeCount === likeCount ? '#fff' : '#76e481',
-            }}
-          >
-            나도 궁금해요
-            <span
+    <>
+      {/* 헤더 및 배너 */}
+      <Container>
+        <Title />
+      </Container>
+      <Buttons>
+        <Button
+          type="button"
+          onClick={() => {
+            navigate('/community', {
+              state: {
+                selected: 'content',
+              },
+            });
+          }}
+          iscontent="true"
+        >
+          컨텐츠
+        </Button>
+        <Button type="button" onClick={onClickBack} selected={true}>
+          게시판
+        </Button>
+      </Buttons>
+
+      {/* 게시글 */}
+      <Section>
+        <h3>
+          <span>Q</span>
+          {question}
+        </h3>
+        <DescriptionBox>
+          <h4>{description}</h4>
+        </DescriptionBox>
+        <InfoBox>
+          <InfoFormat>
+            <div>
+              <span>{date}</span>
+              <img src="https://velog.velcdn.com/images/ea_st_ring/post/76107ac3-37b1-4cdb-9c3c-d88e67f366a0/image.svg" />
+              <h6>답변</h6>
+              <span>{answers.length}</span>
+            </div>
+            <div
+              onClick={onClickLike}
               style={{
-                color: tmpLikeCount === likeCount ? '#76e481' : '#fff',
+                backgroundColor:
+                  tmpLikeCount === likeCount ? '#fff' : '#76e481',
               }}
             >
-              {tmpLikeCount}
-            </span>
-          </div>
-        </InfoFormat>
-      </InfoBox>
+              나도 궁금해요
+              <span
+                style={{
+                  color: tmpLikeCount === likeCount ? '#76e481' : '#fff',
+                }}
+              >
+                {tmpLikeCount}
+              </span>
+            </div>
+          </InfoFormat>
+        </InfoBox>
 
-      {answers.map((answer, index) => (
-        <AnswerBox key={index}>
-          <span>A</span>
-          <p>{answer}</p>
-        </AnswerBox>
-      ))}
+        {/* 답변 작성 */}
+        {answers.map((answer, index) => (
+          <AnswerBox key={index}>
+            <span>A</span>
+            <p>{answer}</p>
+          </AnswerBox>
+        ))}
 
-      <TextInput
-        placeholder="답변을 작성해 플로머들과 정보를 공유해 주세요."
-        onChange={handleInput}
-      />
-      <LetterCount>
-        <span>{input.length}</span>/ 500
-      </LetterCount>
+        <TextInput
+          placeholder="답변을 작성해 플로머들과 정보를 공유해 주세요."
+          onChange={handleInput}
+        />
+        <LetterCount>
+          <span>{input.length}</span>/ 500
+        </LetterCount>
 
-      <ButtonBox>
-        <GoBackButton onClick={onClickBack}>목록으로</GoBackButton>
-        <PostButton onClick={onClickPost}>답변 올리기</PostButton>
-      </ButtonBox>
-    </Section>
+        {/* 버튼 */}
+        <ButtonBox>
+          <GoBackButton onClick={onClickBack}>목록으로</GoBackButton>
+          <PostButton onClick={onClickPost}>답변 올리기</PostButton>
+        </ButtonBox>
+      </Section>
+    </>
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+  height: 480px;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FIDgbk%2FbtsrEzOKa9k%2F3YMh3tu3P7EdDzAYOSZXK1%2Fimg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+`;
 
 const Section = styled.div`
   display: flex;
@@ -99,6 +152,7 @@ const Section = styled.div`
   height: 100%;
   padding: 60px 240px;
   box-sizing: border-box;
+  margin-top: 60px;
   h3 {
     font-size: 1.2rem;
     margin: 0;
@@ -199,6 +253,41 @@ const AnswerBox = styled.div`
     line-height: 180%;
     font-size: 1rem;
   }
+`;
+
+const Buttons = styled.div`
+  margin-top: -160px;
+  margin-left: 256px;
+  z-index: 2;
+  position: relative;
+`;
+
+const Button = styled.button`
+  mix-blend-mode: difference;
+  z-index: 3;
+  position: relative;
+  padding: 10px 20px;
+  background-color: transparent;
+  border-color: transparent transparent
+    ${(props) => (props.selected ? '#76e481' : '#bdbdbd')};
+  color: ${(props) => (props.selected ? '#76e481' : '#bdbdbd')};
+  &:nth-child(1) {
+    border-color: '#76e481';
+    color: '#76e481';
+  }
+  width: 120px;
+  height: 50px;
+  margin-top: 120px;
+  border-width: 10px;
+  flex-shrink: 0;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.497px;
+  cursor: pointer;
+  margin-right: ${(props) => (props.iscontent ? '24px' : '0')};
 `;
 
 const TextInput = styled.textarea`

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Title from './Title';
 import ArticleItem from './Contents/Article/ArticleItem';
 import Recommend from '../Community/Contents/Mountain/Recommend';
 import styled from 'styled-components';
 import Posts from '../Community/Posts/Posts';
+import Writing from './Posts/Writing';
+import Post from './Posts/Post';
+import { useLocation } from 'react-router';
 
 const Box = styled.div`
   overflow-x: hidden;
@@ -53,7 +56,8 @@ const Button = styled.button`
   font-weight: 600;
   line-height: 150%;
   letter-spacing: -0.497px;
-  margin-right: ${(props) => (props.isContent ? '24px' : '0')};
+  cursor: pointer;
+  margin-right: ${(props) => (props.iscontent ? '24px' : '0')};
 `;
 
 const Chapter = styled.div`
@@ -82,7 +86,11 @@ const PostsContainer = styled.div``;
 
 const Community = () => {
   const [selected, setSelected] = useState('content');
-
+  const location = useLocation();
+  useEffect(() => {
+    location.state?.selected && setSelected(location.state?.selected);
+    window.scrollTo(0, 0);
+  }, [location.state?.selected]);
   return (
     <Box>
       <Container>
@@ -93,14 +101,14 @@ const Community = () => {
           type="button"
           onClick={() => setSelected('content')}
           selected={selected === 'content'}
-          isContent
+          iscontent="true"
         >
           컨텐츠
         </Button>
         <Button
           type="button"
           onClick={() => setSelected('board')}
-          selected={selected === 'board'}
+          selected={selected === 'board' || selected === 'writing'}
         >
           게시판
         </Button>
@@ -117,7 +125,19 @@ const Community = () => {
 
       {selected === 'board' && (
         <PostsContainer>
-          <Posts />
+          <Posts setSelect={setSelected} />
+        </PostsContainer>
+      )}
+
+      {selected === 'writing' && (
+        <PostsContainer>
+          <Writing setSelect={setSelected} />
+        </PostsContainer>
+      )}
+
+      {selected === 'post' && (
+        <PostsContainer>
+          <Post setSelect={setSelected} />
         </PostsContainer>
       )}
     </Box>

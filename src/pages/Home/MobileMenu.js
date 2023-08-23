@@ -50,13 +50,13 @@ const Section = styled.div`
     right: 0;
     top: 0;
     width: 60%;
-    height: 100%;
+    height: 100vh;
     padding: 20px 10px;
     box-sizing: border-box;
     border: 1px solid #ebebeb;
     border-radius: 5px;
-    background-color: white;
-    z-index: 11;
+    background-color: white !important;
+    z-index: 999;
     transition: all 0.3s ease-in-out;
     animation: 0.3s ease-in-out slideInFromRight;
     &.close {

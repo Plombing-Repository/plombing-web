@@ -115,7 +115,7 @@ const Item = styled.div`
   border: 1px solid #c4c4c4;
   background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0) 100%
     ),
     url(${(props) => props.imageUrl});

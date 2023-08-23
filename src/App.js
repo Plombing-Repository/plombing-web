@@ -10,6 +10,9 @@ import Participation from './pages/Participation/Participation';
 import Result from './pages/Participation/Result';
 import Loading from './pages/Participation/Loading';
 import Post from './pages/Community/Posts/Post';
+import Recommend1 from './pages/Community/Contents/Mountain/Recommend1';
+import Recommend2 from './pages/Community/Contents/Mountain/Recommend2';
+import Recommend3 from './pages/Community/Contents/Mountain/Recommend3';
 
 function App() {
   // 새로고침 시 최상단 이동
@@ -30,6 +33,9 @@ function App() {
         </React.Fragment>
         <Route path="/about" element={<About />}></Route>
         <Route path="/article/:id" element={<Articles />} />
+        <Route path="/recommend/1" element={<Recommend1 />} />
+        <Route path="/recommend/2" element={<Recommend2 />} />
+        <Route path="/recommend/3" element={<Recommend3 />} />
         <Route path="plombing" element={<Participation />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/result" element={<Result />} />

@@ -7,11 +7,12 @@ import Community from './pages/Community/Community';
 import About from './pages/About/About';
 import Articles from './pages/Community/Contents/Article/Articles';
 import Participation from './pages/Participation/Participation';
-import Result from './pages/Participation/Result';
+// import Result from './pages/Participation/Result';
 import Loading from './pages/Participation/Loading';
 import Board from './pages/Community/Posts/Posts';
 import Post from './pages/Community/Posts/Post';
 import Writing from './pages/Community/Posts/Writing';
+import Result from './pages/Participation/ResultCopy';
 
 function App() {
   // 새로고침 시 최상단 이동

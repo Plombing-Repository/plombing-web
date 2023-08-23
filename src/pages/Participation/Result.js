@@ -256,7 +256,7 @@ const InfoResultBox = styled.div`
   background-color: #fff;
   border-radius: 20px;
   border: 1px solid #76e481;
-  transition: all 0.1s ease-in;
+  transition: all 0.5s ease-in;
   opacity: 0;
   &.observed {
     opacity: 1;
@@ -361,7 +361,6 @@ const NextLevelBox = styled.div`
   }
 `;
 
-// 어떻게 써먹어야 하냐
 const BlurCircle = styled.div`
   width: 300px;
   height: 300px;

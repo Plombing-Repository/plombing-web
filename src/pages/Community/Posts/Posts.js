@@ -99,7 +99,7 @@ const Board = (props) => {
     }
     async function fetchAllPosts() {
       try {
-        const res = await api.get('/post');
+        const res = await api.get('/v1/post');
         console.log(res.data.data);
         const tmpPostInfos = [];
         res.data.data.forEach((data) => {

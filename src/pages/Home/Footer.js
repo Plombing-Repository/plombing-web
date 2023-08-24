@@ -29,7 +29,12 @@ const Section = styled.section`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/2f081aed-4ec6-452c-97ca-d3e7d6fdea03/image.svg');
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('https://velog.velcdn.com/images/ea_st_ring/post/2f081aed-4ec6-452c-97ca-d3e7d6fdea03/image.svg');
   background-size: cover;
   background-position: bottom;
   padding: 60px 240px 40px 240px;
@@ -50,8 +55,11 @@ const Section = styled.section`
     }
     @media screen and (max-width: 500px) {
       width: 80px;
-      height: 20px;
-      margin-top: 36px;
+      height: 12px;
+      margin-top: 20px;
+      align-self: flex-end;
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
     }
   }
   @media screen and (max-width: 500px) {
@@ -91,6 +99,7 @@ const TextBox = styled.div`
   @media screen and (max-width: 500px) {
     justify-content: flex-start;
     height: 92px;
+    margin-top: 20px;
   }
 `;
 

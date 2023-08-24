@@ -67,8 +67,7 @@ const Result = () => {
             <img src="https://velog.velcdn.com/images/ea_st_ring/post/144131d2-9bea-4f9e-81cb-fe1321c9faae/image.svg" />
             <img src="https://velog.velcdn.com/images/ea_st_ring/post/5b07e14a-9bfb-4966-88a5-22ad38775576/image.svg" />
           </FrameBox>
-          {/* 모바일때만 190 */}
-          <ResultGraphic height={190} />
+          <ResultGraphic height={width > 500 ? 512 : 190} />
           <ResultContainer>
             <InfoResultBox id="infoBox">
               <CollectBox>
@@ -103,10 +102,10 @@ const Result = () => {
               <FitnessBox>
                 <h2>플로밍의 운동효과</h2>
                 <ImageWrapper>
-                  <Fit />
+                  <Fit height={width > 500 ? 160 : 'current'} />
                 </ImageWrapper>
                 {width > 500 ? (
-                  <h3>건강에 다가가는 작지만 의미있는 움직임이에요!</h3>
+                  <h3>스쿼트와 런지 운동으로 계산한 칼로리에요</h3>
                 ) : (
                   ''
                 )}
@@ -352,7 +351,7 @@ const ImageWrapper = styled.div`
 const Animal = styled.div`
   grid-area: Animal;
   width: 300px;
-  height: 310px;
+  height: 320px;
   background-color: #fff;
   backdrop-filter: blur(3.5px);
   border-radius: 20px;
@@ -384,7 +383,7 @@ const SaveAnimalBox = styled.div`
   }
   h3 {
     font-size: 0.9rem;
-    margin: 0;
+    margin: 0 0 8px 0;
   }
   @media screen and (max-width: 500px) {
     width: 145px;
@@ -400,7 +399,7 @@ const SaveAnimalBox = styled.div`
     }
     h3 {
       font-size: 0.7rem;
-      margin-top: -10px;
+      margin-top: -10px 0 0 0;
     }
   }
 `;
@@ -408,7 +407,7 @@ const SaveAnimalBox = styled.div`
 const Fitness = styled.div`
   grid-area: Fitness;
   width: 300px;
-  height: 310px;
+  height: 320px;
   background-color: #fff;
   backdrop-filter: blur(3.5px);
   border-radius: 20px;
@@ -419,17 +418,17 @@ const Fitness = styled.div`
   }
   span {
     font-weight: 600;
-    position: absolute;
+    position: relative;
     &:nth-child(2) {
-      font-size: 1.5rem;
-      bottom: 125px;
+      font-size: 1.8rem;
+      bottom: 160px;
       left: 75px;
     }
     &:last-child {
       font-size: 1rem;
-      bottom: 104px;
-      left: 85px;
-      letter-spacing: 2px;
+      bottom: 160px;
+      left: 100px;
+      letter-spacing: 1.5px;
     }
   }
 
@@ -443,15 +442,15 @@ const Fitness = styled.div`
       font-size: 0.8rem;
       font-weight: 600;
       font-family: 'Roboto', sans-serif;
-      position: absolute;
+      position: relative;
       &:nth-child(2) {
         font-size: 0.8rem;
-        bottom: 48px;
+        bottom: 68px;
         left: 38px;
       }
       &:last-child {
         font-size: 0.5rem;
-        bottom: 34px;
+        bottom: 68px;
         left: 42px;
       }
     }
@@ -474,7 +473,7 @@ const FitnessBox = styled.div`
   }
   h3 {
     font-size: 0.9rem;
-    margin: 0;
+    margin: 0 0 8px 0;
   }
   @media screen and (max-width: 500px) {
     width: 145px;
@@ -493,7 +492,7 @@ const FitnessBox = styled.div`
       width: 130px;
       text-align: center;
       font-size: 0.5rem;
-      margin-top: 10px;
+      margin-top: 10px 0 0 0;
     }
   }
 `;

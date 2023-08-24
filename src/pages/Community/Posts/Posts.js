@@ -63,7 +63,7 @@ const Board = (props) => {
                 setSelect('writing');
               }}
             >
-              게시글 작성하기
+              <span>게시글</span> <span>작성하기</span>
             </p>
           </div>
         </BoardHeader>
@@ -151,6 +151,15 @@ const BoardHeader = styled.div`
       line-height: 150%;
       text-align: center;
       cursor: pointer;
+      span {
+        display: inline; // 기본적으로 inline으로 설정
+      }
+
+      @media (max-width: 768px) {
+        span:nth-child(1) {
+          display: block; // 768px 이하에서는 "게시글" 뒤에 줄바꿈 추가
+        }
+      }
     }
   }
 `;

@@ -29,7 +29,7 @@ const Banner = styled.div`
     bottom: 0;
     background: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0) 100%
     );
   }

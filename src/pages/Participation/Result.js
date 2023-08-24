@@ -104,11 +104,7 @@ const Result = () => {
                 <ImageWrapper>
                   <Fit height={width > 500 ? 160 : 'current'} />
                 </ImageWrapper>
-                {width > 500 ? (
-                  <h3>스쿼트와 런지 운동으로 계산한 칼로리에요</h3>
-                ) : (
-                  ''
-                )}
+                {width > 500 ? <h3>스쿼트와 런지로 계산한 칼로리에요!</h3> : ''}
               </FitnessBox>
               <span>{kcal}</span>
               <br />

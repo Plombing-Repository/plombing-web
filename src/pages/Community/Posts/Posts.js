@@ -15,6 +15,7 @@ const Board = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchResult, setSearchResult] = useState([]); // 검색 결과를 담을 배열
   const pageSize = 3; // 한 페이지에 보여줄 게시물 수 설정
 
   // eslint-disable-next-line no-unused-vars
@@ -28,6 +29,8 @@ const Board = (props) => {
   const [search, setSearch] = useState(false);
 
   const [searchValue, setSearchValue] = useState('');
+
+  // eslint-disable-next-line no-unused-vars
   const filteredPosts = postings.postings.filter(
     (postings) =>
       postings.question.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -35,12 +38,12 @@ const Board = (props) => {
   );
 
   const SearchResult =
-    filteredPosts.length === 0 ? (
+    searchResult.length === 0 ? (
       <NoSearchResult />
     ) : (
-      filteredPosts.map((posting, index) => (
+      searchResult.map((posting) => (
         <PostPreview
-          key={index}
+          key={posting.id}
           selected={posting.id === selected}
           id={posting.id}
           date={posting.date}
@@ -59,6 +62,37 @@ const Board = (props) => {
     const startIndex = (pageNumber - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize, postings.postings.length);
     return postings.postings.slice(startIndex, endIndex);
+  }
+
+  function searchPostings(value) {
+    try {
+      console.log(value);
+      const res = api.get(`/search?keyword=${value}`);
+      console.log(res.data.data);
+      const tmpSearchPostInfos = [];
+      res.data.data.forEach((data) => {
+        const {
+          postIndex,
+          createdAt,
+          likeCount,
+          postTitle,
+          post,
+          readCommentDtos,
+        } = data;
+        tmpSearchPostInfos.push({
+          id: postIndex,
+          date: createdAt,
+          likeCount,
+          question: postTitle,
+          description: post,
+          answers: readCommentDtos.map((dto) => dto.comment),
+          commentCount: readCommentDtos.length,
+        });
+      });
+      setSearchResult(tmpSearchPostInfos);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   const fetchMoreData = useCallback(() => {
@@ -142,7 +176,10 @@ const Board = (props) => {
             type="text"
             placeholder="검색어를 입력하세요"
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              searchPostings(e.target.value);
+            }}
             // onKeyDown={onEnterPress}
             ref={inputRef}
           />
@@ -160,7 +197,7 @@ const Board = (props) => {
         </BoardHeader>
         {search
           ? SearchResult
-          : postInfos.map((posting, index) => (
+          : postInfos.map((posting) => (
               <>
                 <PostPreview
                   key={posting.id}

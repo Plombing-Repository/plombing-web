@@ -40,11 +40,16 @@ const Home = () => {
         setProgress(dataProgress);
         setNumber(dataNumber);
 
-        const { phaseModel, backgroundImg, progressBarColor, participateBtnColor } = setPhase(dataProgress);
+        const {
+          phaseModel,
+          background,
+          progressBarColor,
+          participateBtnColor,
+        } = setPhase(dataProgress);
         setPhaseModel(phaseModel);
-        setBackground(backgroundImg);
+        setBackground(background);
         setProgressBarColor(progressBarColor);
-        setParticitateBtnColor(particitateBtnColor);
+        setParticitateBtnColor(participateBtnColor);
         if (dataProgress === 100) {
           setTimeout(() => {
             setIsVisible(true);

@@ -59,6 +59,7 @@ const MiniTitle = styled.h2`
 
   @media screen and (max-width: 500px) {
     font-size: 1rem;
+  }
 `;
 
 const Title = styled.h1`

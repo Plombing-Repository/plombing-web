@@ -72,6 +72,26 @@ const Post = (props) => {
     }
   }
 
+  async function deletePost() {
+    try {
+      const res = await api.delete(`/v1/post/${id}`);
+      console.log(res.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  const onClickDelete = async () => {
+    try {
+      if (window.confirm('정말 삭제하시겠습니까?')) {
+        await deletePost();
+        onClickBack();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const onClickPost = async () => {
     try {
       await postComments();
@@ -125,6 +145,7 @@ const Post = (props) => {
               <h6>답변</h6>
               <span>{comments.length}</span>
             </div>
+            <DeleteButton onClick={onClickDelete}>게시글 삭제하기</DeleteButton>
             <div
               onClick={onClickLike}
               style={{
@@ -269,7 +290,7 @@ const InfoFormat = styled.div`
     justify-content: center;
     flex-direction: row;
   }
-  div:nth-child(2) {
+  div:nth-child(3) {
     width: 140px;
     height: 30px;
     border-radius: 12px;
@@ -315,6 +336,15 @@ const InfoFormat = styled.div`
       margin-right: 0px;
     }
   }
+`;
+
+const DeleteButton = styled.div`
+  width: 140px;
+  height: 35px;
+  border-radius: 12px;
+  margin-right: 440px;
+  background-color: #ff9191;
+  cursor: pointer;
 `;
 
 const AnswerBox = styled.div`

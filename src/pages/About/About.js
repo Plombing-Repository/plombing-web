@@ -17,7 +17,7 @@ const About = () => {
       <StyledHeader />
       <Banner>
         <h1>
-          지방은 덜고, 자연은 더하고, 두 마리 토끼 잡는 트렌트 <br /> 마운틴
+          지방은 덜고, 자연은 더하고, 두 마리 토끼 잡는 트렌드 <br /> 마운틴
           플로깅, 플로밍
         </h1>
       </Banner>
@@ -107,6 +107,9 @@ const Banner = styled.div`
     font-size: 2rem;
     line-height: 150%;
     font-weight: 500;
+    @media screen and (max-width: 1000px) {
+      font-size: 1.1rem;
+    }
   }
 `;
 

@@ -37,7 +37,7 @@ const Banner = (props) => {
             width:
               width > 500
                 ? `${progress * 3.4 + 20}px`
-                : `${progress * 3.4 + 4}px`,
+                : `${progress * 2.5 + 4}px`,
           }}
         >
           <p>{percentage}%</p>
@@ -48,12 +48,17 @@ const Banner = (props) => {
             className="progress-bar"
             style={{
               width:
-                width > 800 ? `${progress * 3.4}px` : `${progress * 3.4}px`,
+                width > 800 ? `${progress * 3.4}px` : `${progress * 2.5}px`,
               background: '#80d088',
             }}
           ></div>
         </div>
-        <button onClick={() => window.location.replace('/plombing')}>
+        <button
+          onClick={() => window.location.replace('/plombing')}
+          style={{
+            color: 'black',
+          }}
+        >
           플로밍 하기
         </button>
       </BannerText>
@@ -122,6 +127,10 @@ const BannerText = styled.div`
     border-radius: 20px;
     background: #fff;
     transition: all 2s ease-out;
+    @media screen and (max-width: 800px) {
+      transition: all 3s ease-out;
+      width: 250px;
+    }
   }
   button {
     width: fit-content;
@@ -167,7 +176,8 @@ const Progress = styled.div`
   }
   @media screen and (max-width: 500px) {
     align-self: start;
-    margin-left: 28px;
+    margin-left: 72px;
+    transition: all 3s ease-out;
   }
 `;
 

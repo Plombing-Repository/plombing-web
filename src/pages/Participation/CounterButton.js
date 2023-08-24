@@ -11,6 +11,7 @@ const StyledButton = styled.button`
   &:active {
     background-color: #ebebeb;
   }
+  color: 'black';
 `;
 
 const CounterContainer = styled.div`

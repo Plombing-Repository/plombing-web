@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../Home/Header';
 import { styled } from 'styled-components';
 import CircleProgress from './CircleProgress';
@@ -17,11 +17,20 @@ const Result = () => {
   const total = location.state?.total;
   const progress = location.state?.progress;
   const kcal = location.state?.kcal;
+  const [width, setWidth] = useState(window.innerWidth);
 
   const divRef = useRef(null);
   // eslint-disable-next-line react/jsx-key
   const animals = [<Squirrel />, <Gorani />, <Raccoon />];
   const animal = animals[Math.floor(Math.random() * animals.length)];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
 
   const handleDownload = async () => {
     console.log('download');
@@ -39,6 +48,10 @@ const Result = () => {
     }
   };
 
+  const goToMain = () => {
+    window.location.href = '/';
+  };
+
   return (
     <div>
       <Header />
@@ -53,8 +66,8 @@ const Result = () => {
             <img src="https://velog.velcdn.com/images/ea_st_ring/post/144131d2-9bea-4f9e-81cb-fe1321c9faae/image.svg" />
             <img src="https://velog.velcdn.com/images/ea_st_ring/post/5b07e14a-9bfb-4966-88a5-22ad38775576/image.svg" />
           </FrameBox>
-
-          <ResultGraphic />
+          {/* 모바일때만 190 */}
+          <ResultGraphic height={190} />
           <ResultContainer>
             <InfoResultBox id="infoBox">
               <CollectBox>
@@ -89,7 +102,7 @@ const Result = () => {
               <FitnessBox>
                 <h2>플로밍의 운동효과</h2>
                 <ImageWrapper>
-                  <Fit width={200} />
+                  <Fit />
                 </ImageWrapper>
                 <h3>건강에 다가가는 작지만 의미있는 움직임이에요!</h3>
               </FitnessBox>
@@ -110,7 +123,9 @@ const Result = () => {
             />
           </FrameBox>
         </CaptureDiv>
-        <StyledButton onClick={handleDownload}>이미지 다운로드</StyledButton>
+        <StyledButton onClick={width < 800 ? goToMain : handleDownload}>
+          {width < 800 ? '홈으로 돌아가기' : '이미지 다운로드'}
+        </StyledButton>
       </Section>
     </div>
   );
@@ -331,6 +346,10 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 100px;
+    height: 108px;
+  }
 `;
 
 const Animal = styled.div`
@@ -484,9 +503,15 @@ const StyledButton = styled.button`
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 600;
+  color: #3d3d3d;
   letter-spacing: -0.5px;
   margin-top: 80px;
   cursor: pointer;
+  @media screen and (max-width: 800px) {
+    width: 250px;
+    height: 50px;
+    font-size: 1rem;
+  }
 `;
 
 export default Result;

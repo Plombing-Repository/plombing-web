@@ -122,6 +122,7 @@ const ToggleButton = styled.button`
     font-size: 16px;
     cursor: pointer;
     z-index: 12;
+    color: 'black';
   }
 `;
 

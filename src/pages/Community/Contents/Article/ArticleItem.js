@@ -13,13 +13,11 @@ const ArticleItem = () => {
   useEffect(() => {
     window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
     window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
-    console.log(window.innerWidth);
     window.addEventListener('resize', () => {
       window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
       window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
     });
   }, []);
-  console.log(slidesNumber);
   const settings = {
     dots: false,
     arrows: true,

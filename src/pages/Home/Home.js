@@ -3,13 +3,13 @@ import { styled } from 'styled-components';
 import arrowIcon from '../Community/Contents/Article/assets/Vector.svg';
 import Footer from './Footer';
 import Header from './Header';
-import Dummy from '../../Dummy.json';
 import Banner from './Banner';
 import { Link } from 'react-router-dom';
 import MainArticle from './MainArticle';
 import ArticleItem from '../Community/Contents/Article/ArticleItem';
 import RecommendItem from '../Community/Contents/Mountain/Recommend';
 import Confetti from '../../effects/Confetti';
+import axios from 'axios';
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
@@ -19,51 +19,67 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [progressBarColor, setProgressBarColor] = useState();
   const [participateBtnColor, setParticitateBtnColor] = useState();
+  const [number, setNumber] = useState(0);
 
   // eslint-disable-next-line no-unused-vars
   const [width, setWidth] = useState(window.innerWidth);
   window.addEventListener('resize', () => {
     setWidth(window.innerWidth);
   });
-  const number = Dummy.plombing_process.plombing;
-  let tmpProgress = 0;
+
   useEffect(() => {
-    function fetchData() {
-      tmpProgress = Dummy.plombing_process.progress * 1;
-      setProgress(tmpProgress);
-      const { phaseModel, background, progressBarColor, participateBtnColor } =
-        setPhase(tmpProgress);
-      setPhaseModel(phaseModel);
-      setBackground(background);
-      setProgressBarColor(progressBarColor);
-      setParticitateBtnColor(participateBtnColor);
-      if (tmpProgress === 100) {
-        setTimeout(() => {
-          setIsVisible(true);
-        }, 2000);
+    async function fetchData() {
+      try {
+        const res = await axios.get(
+          'http://ec2-43-201-95-22.ap-northeast-2.compute.amazonaws.com:8080/v1/season/progress',
+        );
+        console.log(res.data.data);
+        const dataProgress = res.data.data.percent;
+        const dataNumber = res.data.data.plombers;
+
+        setProgress(dataProgress);
+        setNumber(dataNumber);
+
+        const { phaseModel, backgroundImg, progressBarColor, participateBtnColor } = setPhase(dataProgress);
+        setPhaseModel(phaseModel);
+        setBackground(backgroundImg);
+        setProgressBarColor(progressBarColor);
+        setParticitateBtnColor(particitateBtnColor);
+        if (dataProgress === 100) {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, 2000);
+        }
+      } catch (err) {
+        console.error(err);
       }
     }
-    fetchData();
 
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     const timer = setInterval(
       () => {
-        if (percentage < tmpProgress) {
+        if (percentage < progress) {
           setPercentage((prevPercentage) => prevPercentage + 1);
         } else {
           clearInterval(timer);
         }
       },
-      (15 / tmpProgress) * 100,
+      (15 / progress) * 100,
     );
     return () => clearInterval(timer);
   }, [percentage]);
+
+  console.log(number);
   return (
     <Section>
       {isVisible && <Confetti />}
       <StyledHeader />
       <ContentsSection $background={background}>
         <Banner
-          percentage={percentage}
+          percentage={progress}
           progress={progress}
           number={number}
           phaseModel={phaseModel}

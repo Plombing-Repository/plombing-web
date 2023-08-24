@@ -13,7 +13,6 @@ const RecommendItem = () => {
   useEffect(() => {
     window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
     window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
-    console.log(window.innerWidth);
     window.addEventListener('resize', () => {
       window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
       window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
@@ -35,7 +34,7 @@ const RecommendItem = () => {
 
   const prevArrow = useCallback(() => slickRef.current.slickPrev(), []);
   const nextArrow = useCallback(() => slickRef.current.slickNext(), []);
-  console.log(buttonWidth);
+
   return (
     <Wrap>
       <PrevBtn onClick={prevArrow}>

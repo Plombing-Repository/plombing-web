@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
+// import axios from 'axios';
+import api from '../../../api/api';
 
 const Writing = (props) => {
   const setSelect = props.setSelect;
@@ -13,9 +15,19 @@ const Writing = (props) => {
   };
 
   const onClickPost = () => {
-    // TODO: API POST
     console.log(titleInput, descInput);
+    api
+      .post('/v1/post', { postTitle: titleInput, post: descInput })
+      .then((response) => {
+        setTitleInput('');
+        setDescInput('');
+        console.log(titleInput, descInput);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
   return (
     <Section>
       <h1>게시글 작성</h1>

@@ -41,7 +41,7 @@ const Board = (props) => {
       filteredPosts.map((posting, index) => (
         <PostPreview
           key={index}
-          selected={index + 1 === selected}
+          selected={posting.id === selected}
           id={posting.id}
           date={posting.date}
           likeCount={posting.likeCount}

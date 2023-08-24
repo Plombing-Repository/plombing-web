@@ -94,7 +94,7 @@ const ContentSection = styled.section`
   text-align: left;
 
   @media screen and (max-width: 800px) {
-    width: 90%;
+    width: 80%;
     padding: 10px;
   }
 

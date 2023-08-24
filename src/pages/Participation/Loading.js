@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../Home/Header';
 import { useLocation, useNavigate } from 'react-router-dom';
 import loading from './assets/loading_icon.svg';
-import axios from 'axios';
+import api from '../../api/api';
 
 const Loading = () => {
   // const [infoText, setInfoText] = useState('');
@@ -31,13 +31,10 @@ const Loading = () => {
 
     async function fetchData() {
       try {
-        const res = await axios.post(
-          'http://ec2-43-201-95-22.ap-northeast-2.compute.amazonaws.com:8080/v1/season/contribute',
-          {
-            amount: total,
-            isMan: gender === 'male',
-          },
-        );
+        const res = await api.post('/season/contribute', {
+          amount: total,
+          isMan: gender === 'male',
+        });
         console.log(res.data.data);
         const { nowLevelPercent, workResult } = res.data.data;
 

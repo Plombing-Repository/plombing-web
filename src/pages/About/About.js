@@ -98,18 +98,34 @@ const Banner = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url('https://velog.velcdn.com/images/ea_st_ring/post/1d559585-5644-49bd-a98c-843e11fb3ed3/image.jpg');
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url('https://velog.velcdn.com/images/ea_st_ring/post/1d559585-5644-49bd-a98c-843e11fb3ed3/image.jpg');
   background-size: cover;
   background-position: center;
   padding-bottom: 40px;
+  box-sizing: border-box;
   color: white;
   h1 {
     font-size: 2rem;
     line-height: 150%;
     font-weight: 500;
     @media screen and (max-width: 1000px) {
-      font-size: 1.1rem;
+      width: 300px;
+      font-size: 1.6rem;
     }
+  }
+  @media screen and (max-width: 1000px) {
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('https://velog.velcdn.com/images/ea_st_ring/post/1d559585-5644-49bd-a98c-843e11fb3ed3/image.jpg');
+    padding: 0;
   }
 `;
 

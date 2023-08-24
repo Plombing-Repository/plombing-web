@@ -162,6 +162,12 @@ const Title = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+    margin-top: 2px;
+    margin-left: 18px;
+    width: 224px;
+  }
 `;
 
 const Info = styled.div`

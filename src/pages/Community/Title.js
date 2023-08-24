@@ -5,6 +5,10 @@ import Header from '../Home/Header';
 
 const Container = styled.div`
   /* Add container styles if needed */
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const UnfixedHeader = styled.div`
@@ -24,6 +28,12 @@ const MinText = styled.h6`
   margin-top: 160px;
   margin-bottom: -8px;
   margin-left: 256px;
+  @media screen and (max-width: 500px) {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 128px;
+    margin-left: 24px;
+  }
 `;
 
 const MainText = styled.h1`
@@ -34,12 +44,25 @@ const MainText = styled.h1`
   line-height: 150%;
   margin-right: 256px;
   margin-left: 256px;
+  @media screen and (max-width: 500px) {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-left: 24px;
+    margin-right: 0px;
+    width: 350px;
+  }
 `;
 
 const Content = styled.div`
   margin-top: 20px;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const ReadMoreButton = styled.button`
@@ -51,6 +74,17 @@ const ReadMoreButton = styled.button`
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    font-size: 10px;
+    font-weight: 400;
+    width: 68px;
+    height: 20px;
+    border-radius: 4px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 24px;
+    margin-right: 20px;
+  }
 `;
 
 const Title = () => (

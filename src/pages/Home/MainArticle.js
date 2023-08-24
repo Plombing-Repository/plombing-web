@@ -65,8 +65,9 @@ const Item = styled.div`
   }
   @media screen and (max-width: 500px) {
     width: 360px;
-    height: 172px;
-    flex-direction: row;
+    height: 360px;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -88,8 +89,7 @@ const Thumbnail = styled.img`
   object-fit: cover;
   border-radius: 5px;
   @media screen and (max-width: 500px) {
-    width: 120px;
-    height: 140px;
+    width: 300px;
   }
 `;
 
@@ -129,6 +129,7 @@ const InfoBox = styled.div`
       margin-left: 0;
       margin-bottom: 0;
       font-size: 0.5rem;
+      text-align: center;
     }
   }
 `;

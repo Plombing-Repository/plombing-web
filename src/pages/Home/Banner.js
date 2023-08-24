@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { ReactComponent as Polygon } from './assets/polygon.svg';
-
+/** progress에 따라서 phaseModel, background, progressBar, participateBtn를 설정해주는 함수
+ * @param {number} progress
+ * @returns {object} { phaseModel, background, progressBar, participateBtn }
+ * @example
+ * const { phaseModel, background, progressBar, participateBtn } = setPhase(30);
+ *
+ **/
 const Banner = (props) => {
-  const { percentage, progress, number, phaseModel } = props;
+  const { percentage, progress, number, phaseModel, color } = props;
   const [width, setWidth] = useState(window.innerWidth);
-
   const handleResize = () => {
     setWidth(window.innerWidth);
   };
@@ -43,7 +48,7 @@ const Banner = (props) => {
           }}
         >
           <p style={{ fontFamily: 'Roboto' }}>{percentage}%</p>
-          <Polygon style={{ marginRight: '15px' }} />
+          <Polygon style={{ marginRight: '15px' }} fill={color[0]} />
         </Progress>
         <div className="progress-container">
           <div
@@ -51,7 +56,7 @@ const Banner = (props) => {
             style={{
               width:
                 width > 800 ? `${progress * 3.4}px` : `${progress * 2.5}px`,
-              background: '#80d088',
+              background: color[0],
             }}
           ></div>
         </div>
@@ -59,6 +64,7 @@ const Banner = (props) => {
           onClick={() => window.location.replace('/plombing')}
           style={{
             color: 'black',
+            background: color[0],
           }}
         >
           플로밍 하기
@@ -128,6 +134,7 @@ const BannerText = styled.div`
     height: 12px;
     border-radius: 20px;
     background: #fff;
+    /* background: ${(props) => `${props.progress}`}; */
     transition: all 2s ease-out;
     @media screen and (max-width: 800px) {
       transition: all 3s ease-out;

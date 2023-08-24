@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Home/Header';
 import { useLocation, useNavigate } from 'react-router-dom';
 import loading from './assets/loading_icon.svg';
+import axios from 'axios';
 
 const Loading = () => {
   // const [infoText, setInfoText] = useState('');
@@ -21,22 +22,49 @@ const Loading = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const total = location.state?.total;
-  // const gender = location.state?.gender;
-  const progress = 65;
-  const kcal = 525;
+  const gender = location.state?.gender;
+  const [progress, setProgress] = useState(0);
+  const [kcal, setKcal] = useState(0);
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    setTimeout(() => {
-      navigate('/result', {
-        state: {
-          total,
-          progress,
-          kcal,
-        },
-      });
-    }, 3000);
+    async function fetchData() {
+      try {
+        const res = await axios.post(
+          'http://ec2-43-201-95-22.ap-northeast-2.compute.amazonaws.com:8080/v1/season/contribute',
+          {
+            amount: total,
+            isMan: gender === 'male',
+          },
+        );
+        console.log(res.data.data);
+        const { nowLevelPercent, workResult } = res.data.data;
+
+        setProgress(nowLevelPercent);
+        setKcal(workResult);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    if (progress && kcal) {
+      setTimeout(() => {
+        console.log(total, progress, kcal);
+        navigate('/result', {
+          state: {
+            total,
+            progress,
+            kcal,
+          },
+        });
+      }, 3000);
+    }
+  }, [progress, kcal]); // progress와 kcal 상태의 변경을 감지합니다.
 
   return (
     <>

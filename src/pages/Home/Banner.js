@@ -27,7 +27,9 @@ const Banner = (props) => {
         </h1>
         <h3>
           지금까지
-          <span style={{ fontSize: '28px', color: 'black' }}>
+          <span
+            style={{ fontSize: '28px', color: 'black', fontFamily: 'Roboto' }}
+          >
             &nbsp;{number}명
           </span>
           이 플로밍했어요
@@ -40,7 +42,7 @@ const Banner = (props) => {
                 : `${progress * 2.5 + 4}px`,
           }}
         >
-          <p>{percentage}%</p>
+          <p style={{ fontFamily: 'Roboto' }}>{percentage}%</p>
           <Polygon style={{ marginRight: '15px' }} />
         </Progress>
         <div className="progress-container">

@@ -28,6 +28,7 @@ const Result = () => {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
+    setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
@@ -77,7 +78,7 @@ const Result = () => {
                 </ImageWrapper>
                 {/* TODO: 위치 조정 */}
                 <span>{total}L</span>
-                <h4>지구의 쓰레기가 모여들고 있어요!</h4>
+                {width > 500 ? <h4>지구의 쓰레기가 모여들고 있어요!</h4> : ''}
               </CollectBox>
 
               <NextLevelBox>
@@ -85,7 +86,7 @@ const Result = () => {
                 <ImageWrapper>
                   <CircleProgress progress={progress} />
                 </ImageWrapper>
-                <h4>다음 레벨까지 파이팅!</h4>
+                {width > 500 ? <h4>다음 레벨까지 파이팅!</h4> : ''}
               </NextLevelBox>
             </InfoResultBox>
 
@@ -94,7 +95,7 @@ const Result = () => {
                 <BlurCircle />
                 <h2>오늘 내가 구한 동물</h2>
                 <ImageWrapper>{animal}</ImageWrapper>
-                <h3>아싸 너구리!</h3>
+                {width > 500 ? <h3>아싸 너구리!</h3> : ''}
               </SaveAnimalBox>
             </Animal>
 
@@ -104,7 +105,11 @@ const Result = () => {
                 <ImageWrapper>
                   <Fit />
                 </ImageWrapper>
-                <h3>건강에 다가가는 작지만 의미있는 움직임이에요!</h3>
+                {width > 500 ? (
+                  <h3>건강에 다가가는 작지만 의미있는 움직임이에요!</h3>
+                ) : (
+                  ''
+                )}
               </FitnessBox>
               <span>{kcal}</span>
               <br />
@@ -217,7 +222,7 @@ const ResultContainer = styled.div`
     'Animal Fitness';
   @media screen and (max-width: 500px) {
     width: 300px;
-    height: 400px;
+    height: 330px;
     margin-top: -10px;
     grid-gap: 16px;
     grid-column-gap: 10px;
@@ -239,7 +244,7 @@ const InfoResultBox = styled.div`
   border: 1px solid #76e481;
   @media screen and (max-width: 500px) {
     width: 300px;
-    height: 200px;
+    height: 160px;
   }
 `;
 
@@ -272,20 +277,17 @@ const CollectBox = styled.div`
     height: 160px;
     h3 {
       font-size: 0.8rem;
-    }
-    h4 {
-      font-size: 0.52rem;
-      margin-top: -32px;
-      width: 130px;
-      text-align: center;
+      margin-top: 12px;
     }
     img {
       width: 100px;
       margin: 12px 0 12px 0;
     }
     span {
-      font-size: 1rem;
-      margin-top: 11px;
+      font-size: 0.8rem;
+      margin-top: 18px;
+      margin-left: 4px;
+      font-family: 'Roboto', sans-serif;
     }
   }
 `;
@@ -313,12 +315,7 @@ const NextLevelBox = styled.div`
     height: 160px;
     h3 {
       font-size: 0.8rem;
-    }
-    h4 {
-      font-size: 0.52rem;
-      margin-top: -40px;
-      width: 130px;
-      text-align: center;
+      margin-top: 12px;
     }
     div {
       width: 80px;
@@ -366,7 +363,7 @@ const Animal = styled.div`
   }
   @media screen and (max-width: 500px) {
     width: 145px;
-    height: 188px;
+    height: 160px;
   }
 `;
 
@@ -421,33 +418,41 @@ const Fitness = styled.div`
     transform: translateY(-4px);
   }
   span {
-    font-size: 1.2rem;
     font-weight: 600;
     position: absolute;
     &:nth-child(2) {
-      bottom: 130px;
-      left: 85px;
+      font-size: 1.5rem;
+      bottom: 125px;
+      left: 75px;
     }
     &:last-child {
-      bottom: 106px;
+      font-size: 1rem;
+      bottom: 104px;
       left: 85px;
+      letter-spacing: 2px;
     }
   }
 
   @media screen and (max-width: 500px) {
     width: 145px;
-    height: 188px;
+    height: 160px;
+    &:hover {
+      transform: none;
+    }
     span {
       font-size: 0.8rem;
       font-weight: 600;
+      font-family: 'Roboto', sans-serif;
       position: absolute;
       &:nth-child(2) {
-        bottom: 100px;
+        font-size: 0.8rem;
+        bottom: 48px;
         left: 38px;
       }
       &:last-child {
-        bottom: 84px;
-        left: 38px;
+        font-size: 0.5rem;
+        bottom: 34px;
+        left: 42px;
       }
     }
   }

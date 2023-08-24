@@ -9,7 +9,7 @@ import MainArticle from './MainArticle';
 import ArticleItem from '../Community/Contents/Article/ArticleItem';
 import RecommendItem from '../Community/Contents/Mountain/Recommend';
 import Confetti from '../../effects/Confetti';
-import axios from 'axios';
+import api from '../../api/api';
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
@@ -30,9 +30,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get(
-          'http://ec2-43-201-95-22.ap-northeast-2.compute.amazonaws.com:8080/v1/season/progress',
-        );
+        const res = await api.get('/season/progress');
         console.log(res.data.data);
         const dataProgress = res.data.data.percent;
         const dataNumber = res.data.data.plombers;

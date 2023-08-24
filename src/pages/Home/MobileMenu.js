@@ -133,6 +133,7 @@ const ImageWrapper = styled.div`
     align-items: flex-start;
     width: 100%;
     margin-bottom: 24px;
+    color: #444444;
   }
 `;
 export default MobileMenu;

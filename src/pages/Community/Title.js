@@ -24,6 +24,11 @@ const MinText = styled.h6`
   margin-top: 160px;
   margin-bottom: -8px;
   margin-left: 256px;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 16px;
+    font-size: 16px;
+  }
 `;
 
 const MainText = styled.h1`
@@ -34,12 +39,26 @@ const MainText = styled.h1`
   line-height: 150%;
   margin-right: 256px;
   margin-left: 256px;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 16px;
+    font-size: 20px;
+    white-space: nowrap;
+  }
 `;
 
 const Content = styled.div`
   margin-top: 20px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column; // 이 부분 변경
+    justify-content: space-between; // 콘텐츠 사이에 공간을 분배
+    align-items: center; // 아이템들을 중앙으로 정렬
+    margin-left: 10px;
+    width: calc(100% - 32px); // 좌우 마진 16px씩 감안하여 전체 너비 설정
+  }
 `;
 
 const ReadMoreButton = styled.button`
@@ -51,6 +70,7 @@ const ReadMoreButton = styled.button`
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
+  margin-right: -120px;
 `;
 
 const Title = () => (

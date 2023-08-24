@@ -114,6 +114,14 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    padding: 60px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
 `;
 
 const BoardHeader = styled.div`
@@ -155,6 +163,12 @@ const SearchInput = styled.input`
   text-align: start;
   padding: 0 48px;
   margin-right: 32px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
+    padding: 0 12px;
+  }
 `;
 
 const UpButton = styled.img`

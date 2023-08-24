@@ -129,8 +129,11 @@ const InfoFormat = styled.div`
   }
   span {
     font-size: 1rem;
-  }
-`;
+
+  @media (max-width: 768px) {
+    padding: 20px 20px;
+    }
+  `;
 
 const AnswerBox = styled.div`
   display: flex;

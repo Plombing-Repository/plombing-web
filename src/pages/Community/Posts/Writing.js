@@ -43,7 +43,7 @@ const Writing = (props) => {
             width: '100px',
             position: 'absolute',
             right: '260px',
-            top: '270px',
+            top: '760px',
           }}
         >
           <span>{titleInput.length}</span>/ 50

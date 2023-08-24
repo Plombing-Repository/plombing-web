@@ -34,8 +34,8 @@ const Banner = styled.div`
     );
   }
 
-  @media screen and (max-width: 500px) {
-    height: 220px;
+  @media screen and (max-width: 800px) {
+    height: 420px;
   }
 `;
 
@@ -48,7 +48,7 @@ const BannerContent = styled.div`
   position: relative;
   z-index: 1;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     width: 90%;
     padding: 10px;
   }
@@ -57,7 +57,7 @@ const BannerContent = styled.div`
 const MiniTitle = styled.h2`
   font-size: 1.5rem;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     font-size: 1rem;
   }
 `;
@@ -68,7 +68,7 @@ const Title = styled.h1`
   white-space: pre-line;
   line-height: 1.5;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     font-size: 1.4rem;
   }
 `;
@@ -78,7 +78,7 @@ const Address = styled.p`
   font-size: 1.2rem;
   text-align: right;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     font-size: 1rem;
   }
 `;
@@ -94,8 +94,8 @@ const ContentSection = styled.section`
   margin: auto;
   text-align: left;
 
-  @media screen and (max-width: 500px) {
-    width: 90%;
+  @media screen and (max-width: 800px) {
+    width: 80%;
     padding: 10px;
   }
 

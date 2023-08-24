@@ -75,11 +75,21 @@ const Section = styled.div`
     color: #76e481;
     margin-right: 12px;
   }
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+  }
 `;
 const TitleBox = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const TitleInput = styled.textarea`
@@ -104,6 +114,10 @@ const TitleInput = styled.textarea`
     outline: 2px solid #76e481;
     border: none;
   }
+  @media (max-width: 768px) {
+    height: 50px;
+    font-size: 0.9rem;
+  }
 `;
 
 const TextInput = styled.textarea`
@@ -126,6 +140,10 @@ const TextInput = styled.textarea`
   &:focus {
     outline: 2px solid #76e481;
     border: none;
+  }
+  @media (max-width: 768px) {
+    height: 200px;
+    font-size: 0.9rem;
   }
 `;
 
@@ -151,6 +169,11 @@ const ButtonBox = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 64px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const GoBackButton = styled.button`
@@ -165,6 +188,11 @@ const GoBackButton = styled.button`
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    margin-bottom: 20px;
+  }
 `;
 
 const PostButton = styled.button`
@@ -179,6 +207,10 @@ const PostButton = styled.button`
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 `;
 
 export default Writing;

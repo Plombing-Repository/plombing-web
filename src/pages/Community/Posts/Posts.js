@@ -63,7 +63,7 @@ const Board = (props) => {
                 setSelect('writing');
               }}
             >
-              게시글 작성하기
+              <span>게시글</span> <span>작성하기</span>
             </p>
           </div>
         </BoardHeader>
@@ -114,6 +114,14 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    padding: 60px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
 `;
 
 const BoardHeader = styled.div`
@@ -143,6 +151,15 @@ const BoardHeader = styled.div`
       line-height: 150%;
       text-align: center;
       cursor: pointer;
+      span {
+        display: inline; // 기본적으로 inline으로 설정
+      }
+
+      @media (max-width: 768px) {
+        span:nth-child(1) {
+          display: block; // 768px 이하에서는 "게시글" 뒤에 줄바꿈 추가
+        }
+      }
     }
   }
 `;
@@ -155,6 +172,12 @@ const SearchInput = styled.input`
   text-align: start;
   padding: 0 48px;
   margin-right: 32px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
+    padding: 0 12px;
+  }
 `;
 
 const UpButton = styled.img`

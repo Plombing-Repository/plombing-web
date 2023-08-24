@@ -34,6 +34,14 @@ const Buttons = styled.div`
   margin-left: 256px;
   z-index: 2;
   position: relative;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+  }
 `;
 
 const Button = styled.button`
@@ -58,6 +66,12 @@ const Button = styled.button`
   letter-spacing: -0.497px;
   cursor: pointer;
   margin-right: ${(props) => (props.iscontent ? '24px' : '0')};
+
+  @media screen and (max-width: 800px) {
+    width: calc(50% - 12px); // 두 버튼 간의 여백을 위해
+    margin-right: 0;
+    margin-top: 120px;
+  }
 `;
 
 const Chapter = styled.div`
@@ -80,6 +94,11 @@ const Current = styled.p`
   line-height: 150%;
   letter-spacing: -0.497px;
   text-align: left;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 16px;
+    font-size: 16px;
+  }
 `;
 
 const PostsContainer = styled.div``;

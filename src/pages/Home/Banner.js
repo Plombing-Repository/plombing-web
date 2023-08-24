@@ -48,7 +48,7 @@ const Banner = (props) => {
           }}
         >
           <p style={{ fontFamily: 'Roboto' }}>{percentage}%</p>
-          <Polygon style={{ marginRight: '15px' }} />
+          <Polygon style={{ marginRight: '15px' }} fill={color[0]} />
         </Progress>
         <div className="progress-container">
           <div
@@ -56,7 +56,7 @@ const Banner = (props) => {
             style={{
               width:
                 width > 800 ? `${progress * 3.4}px` : `${progress * 2.5}px`,
-              background: '#80d088',
+              background: color[0],
             }}
           ></div>
         </div>
@@ -64,6 +64,7 @@ const Banner = (props) => {
           onClick={() => window.location.replace('/plombing')}
           style={{
             color: 'black',
+            background: color[0],
           }}
         >
           플로밍 하기
@@ -132,8 +133,8 @@ const BannerText = styled.div`
     width: 340px;
     height: 12px;
     border-radius: 20px;
-    // background: #fff;
-    background: ${(props) => `${props.progress}`};
+    background: #fff;
+    /* background: ${(props) => `${props.progress}`}; */
     transition: all 2s ease-out;
     @media screen and (max-width: 800px) {
       transition: all 3s ease-out;

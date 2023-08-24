@@ -15,6 +15,10 @@ const Board = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const pageSize = 3; // 한 페이지에 보여줄 게시물 수 설정
 
+  // eslint-disable-next-line no-unused-vars
+  const [width, setWidth] = useState(window.innerWidth);
+  const [uploadText, setUploadText] = useState('');
+
   const inputRef = useRef(null);
   const [search, setSearch] = useState(false);
 
@@ -77,6 +81,9 @@ const Board = (props) => {
           ? UpButton.classList.add('active')
           : UpButton.classList.remove('active'));
     });
+
+    width < 600 ? setUploadText('글 작성') : setUploadText('게시물 작성하기');
+
     if (inputRef.current) {
       inputRef.current.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -111,7 +118,7 @@ const Board = (props) => {
                 setSelect('writing');
               }}
             >
-              게시글 작성하기
+              {uploadText}
             </p>
           </div>
         </BoardHeader>
@@ -171,6 +178,9 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  @media screen and (max-width: 500px) {
+    padding: 0px 16px;
+  }
 `;
 
 const BoardHeader = styled.div`
@@ -202,6 +212,17 @@ const BoardHeader = styled.div`
       cursor: pointer;
     }
   }
+  @media screen and (max-width: 500px) {
+    padding: 60px 16px 0px 16px;
+    margin-top: 110px;
+    height: 100px;
+    div {
+      width: 80px;
+    }
+    div p {
+      font-size: 14px;
+    }
+  }
 `;
 
 const SearchInput = styled.input`
@@ -212,6 +233,11 @@ const SearchInput = styled.input`
   text-align: start;
   padding: 0 48px;
   margin-right: 32px;
+  @media screen and (max-width: 500px) {
+    margin-right: 10px;
+    padding: 0px 0px 0px 20px;
+    width: 360px;
+  }
 `;
 
 const UpButton = styled.img`
@@ -226,6 +252,11 @@ const UpButton = styled.img`
   cursor: pointer;
   &.active {
     display: flex;
+  }
+  @media screen and (max-width: 500px) {
+    bottom: 40px;
+    right: 50px;
+    width: 40px;
   }
 `;
 

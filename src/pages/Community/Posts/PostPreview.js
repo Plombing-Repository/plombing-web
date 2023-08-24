@@ -90,19 +90,30 @@ const Format = styled.div`
     props.selected ? '1px solid #76e481' : '1px solid #727272'};
   background: #fff;
   transition: all 1s ease-in-out;
+  margin-top: 24px;
   h3 {
     font-size: 1.2rem;
     margin: 0;
+    @media screen and (max-width: 500px) {
+      font-size: 1.1rem;
+    }
   }
   span {
     font-size: 1.5rem;
     color: #76e481;
     margin-right: 12px;
+    @media screen and (max-width: 500px) {
+      font-size: 1.2rem;
+    }
   }
   & + & {
     margin-top: 24px;
   }
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 const InfoBox = styled.div`
@@ -111,6 +122,9 @@ const InfoBox = styled.div`
   height: 30px;
   flex-direction: row;
   margin-top: 24px;
+  @media screen and (max-width: 500px) {
+    margin-top: 10px;
+  }
 `;
 
 const InfoFormat = styled.div`
@@ -122,13 +136,27 @@ const InfoFormat = styled.div`
     width: 20px;
     height: 20px;
     margin-right: 8px;
+    @media screen and (max-width: 500px) {
+      width: 16px;
+    }
   }
   h6 {
     font-size: 1rem;
     margin: 0 8px 0 0;
+    @media screen and (max-width: 500px) {
+      font-size: 0.8rem;
+    }
   }
   span {
     font-size: 1rem;
+    @media screen and (max-width: 500px) {
+      font-size: 0.8rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    p {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -150,6 +178,15 @@ const AnswerBox = styled.div`
     font-weight: 600;
     line-height: 180%;
     font-size: 1rem;
+    @media screen and (max-width: 500px) {
+      font-size: 1rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    padding: 24px 20px;
+    span {
+      margin-top: 4px;
+    }
   }
 `;
 

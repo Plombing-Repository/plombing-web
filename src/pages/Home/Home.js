@@ -64,27 +64,28 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(
-      () => {
-        if (percentage < progress) {
-          setPercentage((prevPercentage) => prevPercentage + 1);
-        } else {
-          clearInterval(timer);
-        }
-      },
-      (15 / progress) * 100,
-    );
-    return () => clearInterval(timer);
-  }, [percentage]);
+    if (progress > 0) {
+      const timer = setInterval(
+        () => {
+          if (percentage < progress) {
+            setPercentage((prevPercentage) => prevPercentage + 1);
+          } else {
+            clearInterval(timer);
+          }
+        },
+        (15 / progress) * 100,
+      );
+      return () => clearInterval(timer);
+    }
+  }, [percentage, progress]); // progress 상태의 변경을 감지합니다.
 
-  console.log(number);
   return (
     <Section>
       {isVisible && <Confetti />}
       <StyledHeader />
       <ContentsSection $background={background}>
         <Banner
-          percentage={progress}
+          percentage={percentage}
           progress={progress}
           number={number}
           phaseModel={phaseModel}

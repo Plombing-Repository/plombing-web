@@ -2,15 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Title from '../Title';
+import api from '../../../api/api';
 
 const Post = (props) => {
   const location = useLocation();
-  const { question, description, date, answers, likeCount } = location.state;
+  const { id, question, description, date, likeCount } = location.state;
   const [input, setInput] = useState('');
   const [tmpLikeCount, setTmpLikeCount] = useState(likeCount);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    async function fetchComments() {
+      try {
+        const res = await api.get(`/v1/post/${id}/comment`);
+        console.log(res.data.data);
+        const tmpComments = [];
+        res.data.data.forEach((content) => {
+          const { comment } = content;
+          tmpComments.push(comment);
+        });
+        setComments(tmpComments);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchComments();
   }, []);
 
   const handleInput = (e) => {
@@ -18,12 +35,12 @@ const Post = (props) => {
   };
 
   const onClickLike = () => {
-    // TODO: API POST
     if (tmpLikeCount === likeCount) {
       setTmpLikeCount(tmpLikeCount + 1);
     } else {
       setTmpLikeCount(likeCount);
     }
+    postLike();
   };
 
   const onClickBack = () => {
@@ -34,9 +51,34 @@ const Post = (props) => {
     });
   };
 
-  const onClickPost = () => {
-    // TODO: API POST
-    console.log(input);
+  async function postComments() {
+    try {
+      const res = await api.post(`/v1/post/${id}/comment`, {
+        comment: input,
+        password: 1234,
+      });
+      console.log(res.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function postLike() {
+    try {
+      const res = await api.get(`/v1/post/${id}/like`);
+      console.log(res.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  const onClickPost = async () => {
+    try {
+      await postComments();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -81,7 +123,7 @@ const Post = (props) => {
               <span>{date}</span>
               <img src="https://velog.velcdn.com/images/ea_st_ring/post/76107ac3-37b1-4cdb-9c3c-d88e67f366a0/image.svg" />
               <h6>답변</h6>
-              <span>{answers.length}</span>
+              <span>{comments.length}</span>
             </div>
             <div
               onClick={onClickLike}
@@ -103,7 +145,7 @@ const Post = (props) => {
         </InfoBox>
 
         {/* 답변 작성 */}
-        {answers.map((answer, index) => (
+        {comments.map((answer, index) => (
           <AnswerBox key={index}>
             <span>A</span>
             <p>{answer}</p>
@@ -113,6 +155,7 @@ const Post = (props) => {
         <TextInput
           placeholder="답변을 작성해 플로머들과 정보를 공유해 주세요."
           onChange={handleInput}
+          maxLength={500}
         />
         <LetterCount>
           <span>{input.length}</span>/ 500
@@ -141,7 +184,6 @@ const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 1;
   overflow: hidden;
   @media screen and (max-width: 500px) {
     width: 100%;

@@ -142,6 +142,13 @@ const Contents = styled.div`
   }
   @media screen and (max-width: 1000px) {
     padding: 40px 36px;
+    h1 {
+      font-size: 1.4rem;
+      width: fit-content;
+    }
+    h3 {
+      font-size: 1.4rem;
+    }
   }
 `;
 

@@ -31,7 +31,7 @@ const Loading = () => {
 
     async function fetchData() {
       try {
-        const res = await api.post('/season/contribute', {
+        const res = await api.post('/v1/season/contribute', {
           amount: total,
           isMan: gender === 'male',
         });

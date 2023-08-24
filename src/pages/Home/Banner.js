@@ -32,7 +32,9 @@ const Banner = (props) => {
         </h1>
         <h3>
           지금까지
-          <span style={{ fontSize: '28px', color: 'black' }}>
+          <span
+            style={{ fontSize: '28px', color: 'black', fontFamily: 'Roboto' }}
+          >
             &nbsp;{number}명
           </span>
           이 플로밍했어요
@@ -42,29 +44,37 @@ const Banner = (props) => {
             width:
               width > 500
                 ? `${progress * 3.4 + 20}px`
-                : `${progress * 3.4 + 35}px`,
+                : `${progress * 2.5 + 4}px`,
           }}
         >
-          <p>{percentage}%</p>
-          <Polygon style={{ marginRight: '15px' }} fill={color[0]} />
+          <p style={{ fontFamily: 'Roboto' }}>{percentage}%</p>
+          <Polygon style={{ marginRight: '15px' }} />
         </Progress>
         <div className="progress-container">
           <div
             className="progress-bar"
             style={{
-              width: `${progress * 3.4}px`,
-              background: `${color[0]}`,
+              width:
+                width > 800 ? `${progress * 3.4}px` : `${progress * 2.5}px`,
+              background: '#80d088',
             }}
           ></div>
         </div>
         <button
           onClick={() => window.location.replace('/plombing')}
-          style={{ background: `${color[1]}` }}
+          style={{
+            color: 'black',
+          }}
         >
           플로밍 하기
         </button>
       </BannerText>
-      <ProgressImage src={phaseModel} alt="phase_model" />
+      <ProgressImage
+        src={phaseModel}
+        alt="phase_model"
+        width={width < 500 ? 250 : 550}
+        height={width < 500 ? 200 : 450}
+      />
     </BannerWrapper>
   );
 };
@@ -84,6 +94,7 @@ const BannerWrapper = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
+    margin: 0;
     img {
       width: 300px;
       margin-right: 64px;
@@ -124,6 +135,10 @@ const BannerText = styled.div`
     // background: #fff;
     background: ${(props) => `${props.progress}`};
     transition: all 2s ease-out;
+    @media screen and (max-width: 800px) {
+      transition: all 3s ease-out;
+      width: 250px;
+    }
   }
   button {
     width: fit-content;
@@ -142,10 +157,14 @@ const BannerText = styled.div`
     }
   }
   @media screen and (max-width: 500px) {
+    width: 200px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
+    .progress-container {
+      border: 1px solid #ededed;
+    }
   }
 `;
 
@@ -165,12 +184,19 @@ const Progress = styled.div`
   }
   @media screen and (max-width: 500px) {
     align-self: start;
+    margin-left: 72px;
+    transition: all 3s ease-out;
   }
 `;
 
 const ProgressImage = styled.img`
   width: 559px !important;
   height: 449px !important;
+  @media screen and (max-width: 500px) {
+    width: 309px !important;
+    height: 300px !important;
+    margin-right: 16px !important;
+  }
 `;
 
 export default Banner;

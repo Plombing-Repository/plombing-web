@@ -15,7 +15,7 @@ export default function Confetti() {
         ...opts,
         origin: { y: 0.8 },
         particleCount: Math.floor(300 * particleRatio),
-        gravity: 3.5,
+        gravity: 1.5,
       });
   }, []);
 
@@ -25,7 +25,7 @@ export default function Confetti() {
         ...opts,
         origin: { x: 0.2, y: 0.6 },
         particleCount: Math.floor(200 * particleRatio),
-        gravity: 3.5,
+        gravity: 1.5,
       });
   }, []);
 
@@ -35,7 +35,7 @@ export default function Confetti() {
         ...opts,
         origin: { x: 0.7, y: 0.5 },
         particleCount: Math.floor(200 * particleRatio),
-        gravity: 3.5,
+        gravity: 1.5,
       });
   }, []);
 

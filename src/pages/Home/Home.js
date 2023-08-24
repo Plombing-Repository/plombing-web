@@ -7,6 +7,7 @@ import Dummy from '../../Dummy.json';
 import Banner from './Banner';
 import { Link } from 'react-router-dom';
 import MainArticle from './MainArticle';
+import ArticleItem from '../Community/Contents/Article/ArticleItem';
 import RecommendItem from '../Community/Contents/Mountain/Recommend';
 import Confetti from '../../effects/Confetti';
 
@@ -19,6 +20,11 @@ const Home = () => {
   const [progressBarColor, setProgressBarColor] = useState();
   const [participateBtnColor, setParticitateBtnColor] = useState();
 
+  // eslint-disable-next-line no-unused-vars
+  const [width, setWidth] = useState(window.innerWidth);
+  window.addEventListener('resize', () => {
+    setWidth(window.innerWidth);
+  });
   const number = Dummy.plombing_process.plombing;
   let tmpProgress = 0;
   useEffect(() => {
@@ -65,24 +71,22 @@ const Home = () => {
         />
         <Contents>
           <Title>
-            <h3>요새 뜨는 환경 아티클을 둘러보세요.</h3>
             <div>
+              <h3>요새 뜨는 환경 아티클을 둘러보세요</h3>
               <button>
                 <Link to="/community">
-                  <p>전체보기</p>
                   <img src={arrowIcon} />
                 </Link>
               </button>
             </div>
           </Title>
-          <MainArticle />
+          {width <= 800 ? <ArticleItem /> : <MainArticle />}
         </Contents>
         <Title>
-          <h3>플로밍 할 만한 산을 추천해드려요!</h3>
           <div>
+            <h3>플로밍 할 만한 산을 추천해드려요!</h3>
             <button>
               <Link to="/community">
-                <p>전체보기</p>
                 <img src={arrowIcon} />
               </Link>
             </button>
@@ -125,11 +129,11 @@ const ContentsSection = styled.div`
   padding: 40px 240px;
   box-sizing: border-box;
   @media screen and (max-width: 500px) {
-    margin: 0px;
+    margin: 0 0 60px 0;
     background-size: 100%;
     background-position: 0px 0px;
     top: 0;
-    padding: 40px 16px;
+    padding: 40px 15px;
   }
 `;
 
@@ -140,8 +144,9 @@ const Contents = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (max-width: 500px) {
-    height: 800px;
+  @media screen and (max-width: 800px) {
+    height: 400px;
+    margin-top: 180px;
   }
 `;
 
@@ -152,14 +157,14 @@ const Title = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: 500px) {
-    margin: 0px;
-    flex-direction: column;
+  div {
+    display: flex;
   }
   h3 {
     font-size: 1.4rem;
     letter-spacing: -0.5px;
     color: #1e1e1e;
+    margin-right: 4px;
     @media screen and (max-width: 500px) {
       font-size: 1.2rem;
     }
@@ -168,6 +173,10 @@ const Title = styled.div`
     background: none;
     outline: none;
     border: none;
+  }
+  img {
+    width: 10px;
+    opacity: 0.6;
   }
   a {
     text-decoration: none;
@@ -185,6 +194,11 @@ const Title = styled.div`
       margin-top: 2px;
     }
   }
+  @media screen and (max-width: 800px) {
+    margin-bottom: 200px;
+    margin: 0;
+    flex-direction: column;
+  }
 `;
 
 /** progress에 따라서 phaseModel, background, progressBar, participateBtn를 설정해주는 함수
@@ -196,9 +210,9 @@ const Title = styled.div`
  **/
 const setPhase = (progress) => {
   const phaseModel1 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/a16328c0-b47e-46f8-b7ed-7aa0800e8233/image.svg';
+    'https://velog.velcdn.com/images/ea_st_ring/post/a95574f8-3e6c-4ae8-89d7-bfda02885562/image.svg';
   const phaseModel2 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/c28c1724-cc59-48f1-a124-ea8a48f8b528/image.svg';
+    'https://velog.velcdn.com/images/ea_st_ring/post/013c3a07-5f73-48d0-96cc-e6b74f3129b5/image.svg';
   const phaseModel3 =
     'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
   const background1 = `linear-gradient(180deg, #FFF9D9 0%, rgba(255, 255, 255, 0.00) 100%)`;

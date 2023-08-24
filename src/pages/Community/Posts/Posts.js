@@ -4,16 +4,21 @@ import PostPreview from './PostPreview';
 import postings from './postings.json';
 import InfiniteScroll from './InfiniteScroll';
 import NoSearchResult from './NoSearchResult';
+import api from '../../../api/api';
 
 const Board = (props) => {
   const setSelect = props.setSelect;
   const initialPostingList = postings.postings.slice(0, 3);
+  // eslint-disable-next-line no-unused-vars
   const [postingList, setPostingList] = useState(initialPostingList);
   const [selected, setSelected] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const pageSize = 3; // 한 페이지에 보여줄 게시물 수 설정
+
+  // eslint-disable-next-line no-unused-vars
+  const [postInfos, setPostInfos] = useState([]);
 
   // eslint-disable-next-line no-unused-vars
   const [width, setWidth] = useState(window.innerWidth);
@@ -92,6 +97,37 @@ const Board = (props) => {
         }
       });
     }
+    async function fetchAllPosts() {
+      try {
+        const res = await api.get('/v1/post');
+        console.log(res.data.data);
+        const tmpPostInfos = [];
+        res.data.data.forEach((data) => {
+          const {
+            postIndex,
+            createdAt,
+            likeCount,
+            postTitle,
+            post,
+            readCommentDtos,
+          } = data;
+          tmpPostInfos.push({
+            id: postIndex,
+            date: createdAt,
+            likeCount,
+            question: postTitle,
+            description: post,
+            answers: readCommentDtos.map((dto) => dto.comment),
+            commentCount: readCommentDtos.length,
+          });
+        });
+        setPostInfos(tmpPostInfos);
+        console.log(tmpPostInfos);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchAllPosts();
   }, []);
 
   const onClickUpButton = () => {
@@ -124,11 +160,11 @@ const Board = (props) => {
         </BoardHeader>
         {search
           ? SearchResult
-          : postingList.map((posting, index) => (
+          : postInfos.map((posting, index) => (
               <>
                 <PostPreview
-                  key={index}
-                  selected={index + 1 === selected}
+                  key={posting.id}
+                  selected={posting.id === selected}
                   id={posting.id}
                   date={posting.date}
                   likeCount={posting.likeCount}

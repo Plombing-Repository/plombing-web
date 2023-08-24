@@ -450,7 +450,7 @@ const Fitness = styled.div`
       }
       &:last-child {
         font-size: 0.5rem;
-        bottom: 68px;
+        bottom: 72px;
         left: 42px;
       }
     }

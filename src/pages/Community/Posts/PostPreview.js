@@ -32,6 +32,7 @@ const PostPreview = (props) => {
     if (selected === true) {
       navigate(`/community/${e.currentTarget.id}`, {
         state: {
+          id,
           likeCount,
           date,
           question,

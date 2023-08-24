@@ -117,7 +117,7 @@ const Board = (props) => {
             likeCount,
             question: postTitle,
             description: post,
-            answers: readCommentDtos,
+            answers: readCommentDtos.map((dto) => dto.comment),
             commentCount: readCommentDtos.length,
           });
         });
@@ -163,7 +163,7 @@ const Board = (props) => {
           : postInfos.map((posting, index) => (
               <>
                 <PostPreview
-                  key={index}
+                  key={posting.id}
                   selected={posting.id === selected}
                   id={posting.id}
                   date={posting.date}

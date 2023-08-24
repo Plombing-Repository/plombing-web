@@ -30,7 +30,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await api.get('/season/progress');
+        const res = await api.get('/v1/season/progress');
         console.log(res.data.data);
         const dataProgress = res.data.data.percent;
         const dataNumber = res.data.data.plombers;

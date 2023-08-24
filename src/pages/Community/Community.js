@@ -27,6 +27,16 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 300px;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FIDgbk%2FbtsrEzOKa9k%2F3YMh3tu3P7EdDzAYOSZXK1%2Fimg.jpg');
+  }
 `;
 
 const Buttons = styled.div`
@@ -34,6 +44,12 @@ const Buttons = styled.div`
   margin-left: 256px;
   z-index: 2;
   position: relative;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: row;
+    margin: -160px auto;
+    width: fit-content;
+  }
 `;
 
 const Button = styled.button`
@@ -58,6 +74,9 @@ const Button = styled.button`
   letter-spacing: -0.497px;
   cursor: pointer;
   margin-right: ${(props) => (props.iscontent ? '24px' : '0')};
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const Chapter = styled.div`
@@ -66,6 +85,12 @@ const Chapter = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 48px;
+  @media screen and (max-width: 500px) {
+    padding: 40px 16px;
+    margin-top: 140px;
+    width: 360px;
+    height: fit-content;
+  }
 `;
 
 const Current = styled.p`
@@ -80,6 +105,10 @@ const Current = styled.p`
   line-height: 150%;
   letter-spacing: -0.497px;
   text-align: left;
+  @media screen and (max-width: 500px) {
+    margin-left: 20px;
+    font-size: 1.2rem;
+  }
 `;
 
 const PostsContainer = styled.div``;

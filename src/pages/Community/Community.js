@@ -25,7 +25,6 @@ const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 1;
   overflow: hidden;
   @media screen and (max-width: 500px) {
     width: 100%;
@@ -42,7 +41,7 @@ const Container = styled.div`
 const Buttons = styled.div`
   margin-top: -160px;
   margin-left: 256px;
-  z-index: 2;
+  z-index: 1;
   position: relative;
   @media screen and (max-width: 500px) {
     display: flex;
@@ -54,7 +53,6 @@ const Buttons = styled.div`
 
 const Button = styled.button`
   mix-blend-mode: difference;
-  z-index: 3;
   position: relative;
   padding: 10px 20px;
   background-color: transparent;

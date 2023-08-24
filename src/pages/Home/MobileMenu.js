@@ -88,6 +88,7 @@ const Menu = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
+    z-index: 999;
   }
 `;
 
@@ -103,6 +104,7 @@ const MenuLink = styled(NavLink)`
     font-weight: 500;
     padding: 8px;
     text-decoration: none;
+    z-index: 999;
     color: #1e1e1e;
     &:not(:last-child) {
       border-bottom: 0.1px solid #ebebeb;

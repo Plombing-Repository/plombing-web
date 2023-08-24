@@ -11,12 +11,12 @@ const Container = styled.div`
   }
 `;
 
-const UnfixedHeader = styled.div`
-  border: 0.5px solid #fff;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px -3px 40px 0px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-`;
+// const UnfixedHeader = styled.div`
+//   border: 0.5px solid #fff;
+//   background: rgba(255, 255, 255, 0.7);
+//   box-shadow: 0px -3px 40px 0px rgba(0, 0, 0, 0.1);
+//   backdrop-filter: blur(8px);
+// `;
 
 const MinText = styled.h6`
   color: white;
@@ -89,9 +89,8 @@ const ReadMoreButton = styled.button`
 
 const Title = () => (
   <Container>
-    <UnfixedHeader>
-      <Header />
-    </UnfixedHeader>
+    <Header />
+
     <MinText>현재 가장 인기있는 아티클이에요</MinText>
     <Content>
       <MainText>비 때문에 몸살 앓는 &lsquo;자연&rsquo;?</MainText>

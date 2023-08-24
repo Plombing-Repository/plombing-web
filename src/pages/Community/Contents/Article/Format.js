@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useParams, useState } from 'react';
+import React, { useEffect, useParams, useState } from 'react';
 import { styled } from 'styled-components';
 import Header from '../../../Home/Header';
 import ArticleItem from './ArticleItem';
@@ -50,7 +50,12 @@ const Banner = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-image: ${(props) => `url(${props.$background})`};
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    ${(props) => `url(${props.$background})`};
   background-size: cover;
   background-position: center;
   padding-bottom: 40px;
@@ -74,6 +79,16 @@ const Banner = styled.div`
     box-sizing: border-box;
     text-align: right;
   }
+  @media screen and (max-width: 800px) {
+    h1 {
+      padding: 0px 40px;
+      font-size: 1.6rem;
+    }
+    h2 {
+      padding: 0px 15px;
+      font-size: 1rem;
+    }
+  }
 `;
 
 const Contents = styled.div`
@@ -94,6 +109,9 @@ const Contents = styled.div`
     line-height: 180%;
     font-weight: 500;
   }
+  @media screen and (max-width: 800px) {
+    padding: 0 60px;
+  }
 `;
 
 const Divider = styled.div`
@@ -103,6 +121,9 @@ const Divider = styled.div`
   margin: auto;
   margin-top: 80px;
   margin-bottom: 32px;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -137,6 +158,12 @@ const Source = styled.div`
   }
   margin-top: 0;
   margin-bottom: 8rem;
+  @media screen and (max-width: 800px) {
+    h6 {
+      width: 100%;
+      font-size: 0.5rem;
+    }
+  }
 `;
 
 export default Format;

@@ -35,7 +35,7 @@ const Banner = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    height: 220px;
+    height: 480px;
   }
 `;
 
@@ -47,10 +47,11 @@ const BannerContent = styled.div`
   border-radius: 5px;
   position: relative;
   z-index: 1;
-
+  box-sizing: border-box;
   @media screen and (max-width: 500px) {
-    width: 90%;
-    padding: 10px;
+    width: 100%;
+    height: 480px;
+    padding-left: 24px;
   }
 `;
 
@@ -59,6 +60,9 @@ const MiniTitle = styled.h2`
 
   @media screen and (max-width: 500px) {
     font-size: 1rem;
+    padding: 0px 4px;
+    font-size: 1rem;
+    margin-top: 260px;
   }
 `;
 
@@ -70,6 +74,9 @@ const Title = styled.h1`
 
   @media screen and (max-width: 500px) {
     font-size: 1.4rem;
+    padding: 0px 4px;
+    font-size: 1.6rem;
+    font-weight: 500;
   }
 `;
 
@@ -93,7 +100,7 @@ const ContentSection = styled.section`
   align-items: left;
   margin: auto;
   text-align: left;
-
+  box-sizing: border-box;
   @media screen and (max-width: 500px) {
     width: 90%;
     padding: 10px;
@@ -108,6 +115,13 @@ const ContentSection = styled.section`
     margin-top: 8px;
     text-align: left;
     font-size: 1rem;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    padding: 30px 60px;
+    h3 {
+      font-size: 1.36rem;
+    }
   }
 `;
 
@@ -134,6 +148,30 @@ const ContentImage = styled.img`
   display: block;
   margin: 20px auto;
   text-align: left;
+`;
+
+const Another = styled.div`
+  max-width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin: 0 232px;
+  text-align: left;
+  box-sizing: border-box;
+  h3 {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 0;
+    h3 {
+      font-size: 1.36rem;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
 `;
 
 // Recommendation Component
@@ -179,9 +217,11 @@ const Recommendation = () => {
         <GreenBox>{detail}</GreenBox>
         <ContentImage src={content2} alt="Content Image" />
         <h6>{additional}</h6>
+      </ContentSection>
+      <Another>
         <h3>다른 산도 추천받아 보세요.</h3>
         <Recommend />
-      </ContentSection>
+      </Another>
     </Container>
   );
 };

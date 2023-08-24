@@ -204,11 +204,11 @@ const Title = styled.div`
  **/
 const setPhase = (progress) => {
   const phaseModel1 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/a16328c0-b47e-46f8-b7ed-7aa0800e8233/image.svg';
+    'https://velog.velcdn.com/images/ea_st_ring/post/a95574f8-3e6c-4ae8-89d7-bfda02885562/image.svg';
   const phaseModel2 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/c28c1724-cc59-48f1-a124-ea8a48f8b528/image.svg';
+    'https://velog.velcdn.com/images/ea_st_ring/post/013c3a07-5f73-48d0-96cc-e6b74f3129b5/image.svg';
   const phaseModel3 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
+    'https://velog.velcdn.com/images/ea_st_ring/post/b36cca68-00d1-4d8f-ae80-a49bcf98a287/image.svg';
   const background1 =
     'https://velog.velcdn.com/images/ea_st_ring/post/0e919ba0-2cb2-481a-a1d9-efad4611e876/image.svg';
   const background2 =

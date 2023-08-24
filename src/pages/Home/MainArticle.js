@@ -76,6 +76,9 @@ const ArticleBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 360px;
+  }
 `;
 
 const Thumbnail = styled.img`

@@ -11,13 +11,15 @@ const ArticleItem = () => {
   const [slidesNumber, setSlidesToShow] = useState(3);
   const [buttonWidth, setButtonWidth] = useState(0);
   useEffect(() => {
+    window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
+    window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
     console.log(window.innerWidth);
     window.addEventListener('resize', () => {
       window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
       window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
     });
   }, []);
-
+  console.log(slidesNumber);
   const settings = {
     dots: false,
     arrows: true,
@@ -85,7 +87,7 @@ const Wrap = styled.div`
   }
   @media (max-width: 800px) {
     .slick-list {
-      width: 250px;
+      width: 250px !important;
     }
   }
 `;

@@ -50,14 +50,15 @@ const Section = styled.section`
     }
     @media screen and (max-width: 500px) {
       width: 80px;
-      height: 24px;
+      height: 20px;
+      margin-top: 36px;
     }
   }
   @media screen and (max-width: 500px) {
-    background-size: 100%;
-    background-repeat: no-repeat;
+    height: 220px;
+    background-size: cover;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 12px 60px;
   }
 `;
@@ -77,14 +78,14 @@ const TextBox = styled.div`
     margin-bottom: 1rem;
     margin-top: 0;
     @media screen and (max-width: 500px) {
-      font-size: 0.8rem;
+      font-size: 1rem;
       margin-bottom: 0.6rem;
     }
   }
   p {
     line-height: 150%;
     @media screen and (max-width: 500px) {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
     }
   }
   @media screen and (max-width: 500px) {

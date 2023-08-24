@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -8,11 +8,24 @@ import PrevArrow from '../Article/assets/prev_btn.svg';
 import NextArrow from '../Article/assets/next_btn.svg';
 
 const RecommendItem = () => {
+  const [slidesNumber, setSlidesToShow] = useState(3);
+  const [buttonWidth, setButtonWidth] = useState(0);
+  useEffect(() => {
+    console.log(window.innerWidth);
+    window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
+    window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
+  }, []);
+
+  window.addEventListener('resize', () => {
+    window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
+    window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
+  });
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slidesNumber,
     slidesToScroll: 1,
   };
 
@@ -24,17 +37,17 @@ const RecommendItem = () => {
 
   const prevArrow = useCallback(() => slickRef.current.slickPrev(), []);
   const nextArrow = useCallback(() => slickRef.current.slickNext(), []);
-
+  console.log(buttonWidth);
   return (
     <Wrap>
       <PrevBtn onClick={prevArrow}>
-        <img src={PrevArrow} alt="Previous Button" />
+        <img src={PrevArrow} alt="Previous Button" width={buttonWidth} />
       </PrevBtn>
       <Slider ref={slickRef} {...settings}>
         {mountains.mountains.map((mountain) => (
           <Item
             key={mountain.id}
-            imageUrl={mountain.imageUrl}
+            imageurl={mountain.imageUrl}
             onClick={() => {
               onClickItem(mountain.id);
             }}
@@ -56,7 +69,7 @@ const RecommendItem = () => {
         ))}
       </Slider>
       <NextBtn onClick={nextArrow}>
-        <img src={NextArrow} alt="Next Button" />
+        <img src={NextArrow} alt="Next Button" width={buttonWidth} />
       </NextBtn>
     </Wrap>
   );
@@ -89,6 +102,11 @@ const Wrap = styled.div`
     opacity: 0;
     display: none;
   }
+  @media (max-width: 800px) {
+    .slick-list {
+      width: 235px !important;
+    }
+  }
 `;
 
 const PrevBtn = styled.button`
@@ -96,14 +114,14 @@ const PrevBtn = styled.button`
   left: 0;
   border: none;
   background-color: white;
-  margin-right: 36px;
+  margin-right: 9px;
 `;
 
 const NextBtn = styled.button`
   right: 0;
   border: none;
   background-color: white;
-  margin-left: 36px;
+  margin-left: 9px;
 `;
 
 const Item = styled.div`
@@ -115,10 +133,10 @@ const Item = styled.div`
   border: 1px solid #c4c4c4;
   background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0) 100%
     ),
-    url(${(props) => props.imageUrl});
+    url(${(props) => props.imageurl});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

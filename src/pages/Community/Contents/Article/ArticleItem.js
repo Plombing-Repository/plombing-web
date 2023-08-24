@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -8,15 +8,24 @@ import PrevArrow from './assets/prev_btn.svg';
 import NextArrow from './assets/next_btn.svg';
 
 const ArticleItem = () => {
+  const [slidesNumber, setSlidesToShow] = useState(3);
+  const [buttonWidth, setButtonWidth] = useState(0);
+  useEffect(() => {
+    console.log(window.innerWidth);
+    window.addEventListener('resize', () => {
+      window.innerWidth <= 800 ? setSlidesToShow(1) : setSlidesToShow(3);
+      window.innerWidth <= 800 ? setButtonWidth(45) : setButtonWidth(64);
+    });
+  }, []);
+
   const settings = {
     dots: false,
     arrows: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slidesNumber,
     slidesToScroll: 1,
   };
-
   const slickRef = useRef(null);
   const onClickItem = useCallback((index) => {
     window.location.href = `/article/${index}`;
@@ -27,7 +36,7 @@ const ArticleItem = () => {
   return (
     <Wrap>
       <PrevBtn onClick={prevArrow}>
-        <img src={PrevArrow} />
+        <img src={PrevArrow} width={buttonWidth} />
       </PrevBtn>
       <Slider ref={slickRef} {...settings}>
         {articles.articles.map((article) => (
@@ -48,7 +57,7 @@ const ArticleItem = () => {
         ))}
       </Slider>
       <NextBtn onClick={nextArrow}>
-        <img src={NextArrow} />
+        <img src={NextArrow} width={buttonWidth} />
       </NextBtn>
     </Wrap>
   );
@@ -74,21 +83,32 @@ const Wrap = styled.div`
     opacity: 0;
     display: none;
   }
+  @media (max-width: 800px) {
+    .slick-list {
+      width: 250px;
+    }
+  }
 `;
 
 const PrevBtn = styled.button`
   position: relative;
   left: 0;
   border: none;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0);
   margin-right: 36px;
+  @media (max-width: 800px) {
+    margin: 0;
+  }
 `;
 
 const NextBtn = styled.button`
   right: 0;
   border: none;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0);
   margin-left: 36px;
+  @media (max-width: 800px) {
+    margin: 0;
+  }
 `;
 
 const Item = styled.div`
@@ -98,7 +118,7 @@ const Item = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   border-radius: 20px;
-  border: 0.869px solid #c4c4c4;
+  border: 1px solid #c4c4c4;
   background: #fff;
   margin-top: 10px;
   cursor: pointer;

@@ -77,6 +77,8 @@ export default RecommendItem;
 const Wrap = styled.div`
   overflow: hidden;
   display: flex;
+  justify-content: center;
+  margin-top: 40px;
   .slick-slider,
   .slick-list,
   .slick-track {
@@ -86,6 +88,9 @@ const Wrap = styled.div`
     max-width: 100vw;
     width: 100%;
     overflow: hidden !important;
+  }
+  .slick-slider.slick-initialized {
+    width: fit-content !important;
   }
   .slick-list {
     width: 746px;
@@ -102,6 +107,9 @@ const Wrap = styled.div`
   @media (max-width: 800px) {
     .slick-list {
       width: 235px !important;
+    }
+    .slick-slider.slick-initialized {
+      width: fit-content;
     }
   }
 `;

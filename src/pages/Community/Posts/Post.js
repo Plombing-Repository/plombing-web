@@ -143,6 +143,16 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 300px;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FIDgbk%2FbtsrEzOKa9k%2F3YMh3tu3P7EdDzAYOSZXK1%2Fimg.jpg');
+  }
 `;
 
 const Section = styled.div`
@@ -161,6 +171,14 @@ const Section = styled.div`
     font-size: 1.5rem;
     color: #76e481;
     margin-right: 12px;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 20px 24px;
+    margin-top: 200px;
+    h4 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
   }
 `;
 
@@ -232,6 +250,29 @@ const InfoFormat = styled.div`
       }
     }
   }
+  @media screen and (max-width: 500px) {
+    margin-right: 0px;
+    span {
+      font-size: 14px;
+      margin-right: 24px;
+      width: fit-content;
+    }
+    img {
+      width: 18px;
+    }
+    h6 {
+      font-size: 14px;
+    }
+    .curious {
+      width: 100px;
+    }
+    div:nth-child(2) {
+      width: 130px;
+      height: 20px;
+      font-size: 14px;
+      margin-right: 0px;
+    }
+  }
 `;
 
 const AnswerBox = styled.div`
@@ -260,6 +301,12 @@ const Buttons = styled.div`
   margin-left: 256px;
   z-index: 2;
   position: relative;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: row;
+    margin: -160px auto;
+    width: fit-content;
+  }
 `;
 
 const Button = styled.button`
@@ -288,6 +335,9 @@ const Button = styled.button`
   letter-spacing: -0.497px;
   cursor: pointer;
   margin-right: ${(props) => (props.iscontent ? '24px' : '0')};
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const TextInput = styled.textarea`
@@ -306,6 +356,9 @@ const TextInput = styled.textarea`
   &::placeholder {
     color: #5e5e5e;
     font-family: 'Pretendard';
+  }
+  @media screen and (max-width: 500px) {
+    margin-top: 68px;
   }
 `;
 
@@ -331,6 +384,9 @@ const ButtonBox = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin-top: 64px;
+  @media screen and (max-width: 500px) {
+    gap: 20px;
+  }
 `;
 
 const GoBackButton = styled.button`
@@ -345,6 +401,10 @@ const GoBackButton = styled.button`
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    height: 40px;
+    font-size: 1rem;
+  }
 `;
 
 const PostButton = styled.button`
@@ -359,5 +419,9 @@ const PostButton = styled.button`
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 600;
+  @media screen and (max-width: 500px) {
+    height: 40px;
+    font-size: 1rem;
+  }
 `;
 export default Post;

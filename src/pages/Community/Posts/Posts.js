@@ -221,6 +221,7 @@ const BoardHeader = styled.div`
     }
     div p {
       font-size: 14px;
+      color: #1e1e1e;
     }
   }
 `;

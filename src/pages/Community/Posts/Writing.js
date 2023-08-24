@@ -21,6 +21,7 @@ const Writing = (props) => {
       .then((response) => {
         setTitleInput('');
         setDescInput('');
+        onClickBack();
         console.log(titleInput, descInput);
       })
       .catch((error) => {

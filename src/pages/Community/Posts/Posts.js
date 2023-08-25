@@ -67,29 +67,37 @@ const Board = (props) => {
   function searchPostings(value) {
     try {
       console.log(value);
-      const res = api.get(`/v1/post/search?keyword=${value}`);
-      console.log(res.data.data);
-      const tmpSearchPostInfos = [];
-      res.data.data.forEach((data) => {
-        const {
-          postIndex,
-          createdAt,
-          likeCount,
-          postTitle,
-          post,
-          readCommentDtos,
-        } = data;
-        tmpSearchPostInfos.push({
-          id: postIndex,
-          date: createdAt,
-          likeCount,
-          question: postTitle,
-          description: post,
-          answers: readCommentDtos.map((dto) => dto.comment),
-          commentCount: readCommentDtos.length,
+
+      // eslint-disable-next-line no-unused-vars
+      const res = api
+        .get(`/v1/post/search?keyword=${value}`)
+        .then((response) => {
+          console.log(response.data.data);
+          const tmpSearchPostInfos = [];
+          response.data.data.forEach((data) => {
+            const {
+              postIndex,
+              createdAt,
+              likeCount,
+              postTitle,
+              post,
+              readCommentDtos,
+            } = data;
+            tmpSearchPostInfos.push({
+              id: postIndex,
+              date: createdAt,
+              likeCount,
+              question: postTitle,
+              description: post,
+              answers: readCommentDtos.map((dto) => dto.comment),
+              commentCount: readCommentDtos.length,
+            });
+          });
+          setSearchResult(tmpSearchPostInfos);
+        })
+        .catch((error) => {
+          console.error(error);
         });
-      });
-      setSearchResult(tmpSearchPostInfos);
     } catch (err) {
       console.error(err);
     }

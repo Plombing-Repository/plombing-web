@@ -14,8 +14,6 @@ const Header = () => {
     setScrollPosition(position);
   };
   const toggleMenu = () => {
-    // const menu = document.querySelector('.menu');
-    // menu.classList.toggle('active');
     setIsMenuOpen(!isMenuOpen);
   };
 

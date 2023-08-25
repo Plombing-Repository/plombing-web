@@ -10,10 +10,13 @@ import ArticleItem from '../Community/Contents/Article/ArticleItem';
 import RecommendItem from '../Community/Contents/Mountain/Recommend';
 import Confetti from '../../effects/Confetti';
 import api from '../../api/api';
+import flombing1 from './assets/flombing1.svg';
+import flombing2 from './assets/flombing2.svg';
+import flombing3 from './assets/flombing3.svg';
 
 const Home = () => {
   const [percentage, setPercentage] = useState(0);
-  const [phaseModel, setPhaseModel] = useState('');
+  const [phaseModel, setPhaseModel] = useState();
   const [progress, setProgress] = useState(0);
   const [background, setBackground] = useState();
   const [isVisible, setIsVisible] = useState(false);
@@ -229,12 +232,9 @@ const Title = styled.div`
  *
  **/
 const setPhase = (progress) => {
-  const phaseModel1 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/a95574f8-3e6c-4ae8-89d7-bfda02885562/image.svg';
-  const phaseModel2 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/013c3a07-5f73-48d0-96cc-e6b74f3129b5/image.svg';
-  const phaseModel3 =
-    'https://velog.velcdn.com/images/ea_st_ring/post/709f5004-60b5-4b65-94b6-027eb3be09c1/image.svg';
+  const phaseModel1 = flombing1;
+  const phaseModel2 = flombing2;
+  const phaseModel3 = flombing3;
   const background1 = `linear-gradient(180deg, #FFF9D9 0%, rgba(255, 255, 255, 0.00) 100%)`;
   const background2 = `linear-gradient(180deg, #DCFFD9 0%, rgba(255, 255, 255, 0.00) 100%)`;
   const background3 = `linear-gradient(180deg, #DCFFD9 0%, rgba(255, 255, 255, 0.00) 100%)`;

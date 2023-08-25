@@ -67,7 +67,7 @@ const Board = (props) => {
   function searchPostings(value) {
     try {
       console.log(value);
-      const res = api.get(`/search?keyword=${value}`);
+      const res = api.get(`/v1/post/search?keyword=${value}`);
       console.log(res.data.data);
       const tmpSearchPostInfos = [];
       res.data.data.forEach((data) => {
